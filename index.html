@@ -182,18 +182,302 @@ main{max-width:920px;margin:0 auto;padding:30px 18px 40px}
 .gback{align-items:stretch;text-align:left;justify-content:flex-start;gap:18px;padding:22px}
 .ghead{display:flex;gap:12px;flex-wrap:wrap;align-items:center;justify-content:space-between}
 .gbtns{display:flex;gap:8px;flex-wrap:wrap}
-.gcard{cursor:default}
-.gcard:hover{transform:none}
+.gpanel{background:var(--card);border:2px solid var(--gld);border-radius:14px;padding:22px;display:flex;flex-direction:column;gap:18px}
 .gfront{border:0;font:inherit;width:100%;cursor:pointer;min-height:460px}
 .gfront .q{font-size:34px}
 .gfront:focus-visible{outline:3px solid var(--gld);outline-offset:-8px}
-@media (prefers-reduced-motion:no-preference){.gcard.on .tile{animation:pop .5s cubic-bezier(.2,.8,.2,1) backwards;animation-delay:calc(var(--k)*30ms + 350ms)}}
-.doc{margin:0 0 34px;max-width:680px}
+@media (prefers-reduced-motion:no-preference){.gpanel.enter .tile{animation:pop .5s cubic-bezier(.2,.8,.2,1) backwards;animation-delay:calc(var(--k)*30ms + 350ms)}}
+.doc{margin:0 auto 76px;max-width:680px;text-align:center}
+.doc .sec::after{margin-left:auto;margin-right:auto;transform-origin:center}
 .doc .sec{margin:0 0 14px}
 .doc .txt{font:400 20px/1.75 Georgia,"Times New Roman",serif;margin:0}
 .doc .key{font:600 clamp(36px,8vw,56px)/1.1 Georgia,"Times New Roman",serif;color:var(--navy);margin:0}
 @media (prefers-reduced-motion:no-preference){.doc{animation:cardin .6s cubic-bezier(.2,.8,.2,1) backwards;animation-delay:calc(var(--i)*120ms + 150ms)}}
-</style>
+.dh{all:unset;box-sizing:border-box;display:inline-flex;align-items:center;justify-content:center;gap:14px;cursor:pointer;border-radius:10px;padding:2px 10px}
+.dh:focus-visible{outline:3px solid var(--gld);outline-offset:3px}
+.dh:hover .car2{border-color:var(--gld)}
+.car2{flex:none;width:12px;height:12px;border-right:3px solid var(--navy);border-bottom:3px solid var(--navy);transform:rotate(45deg) translate(-2px,-2px);transition:transform .35s cubic-bezier(.2,.8,.2,1),border-color .25s}
+.dh[aria-expanded="true"] .car2{transform:rotate(-135deg) translate(-2px,-2px)}
+.dbody{display:grid;grid-template-rows:1fr;transition:grid-template-rows .45s cubic-bezier(.2,.8,.2,1),opacity .35s ease;opacity:1}
+.dbody.shut{grid-template-rows:0fr;opacity:0}
+.dclip{overflow:hidden;min-height:0}
+@media (prefers-reduced-motion:reduce){.dbody,.car2{transition:none}}
+.filt{display:flex;gap:10px;flex-wrap:wrap;justify-content:center;border:0;margin:0 0 18px;padding:0}
+.sr{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
+.fl{display:inline-flex;align-items:center;gap:8px;padding:8px 16px;border-radius:999px;border:1px solid var(--line);background:var(--card);color:var(--ink);cursor:pointer;font-size:15px;transition:border-color .25s,background .25s,transform .25s}
+.fl:hover{border-color:var(--gld);transform:translateY(-2px)}
+.fl:has(input:checked){background:var(--goldbg);border-color:var(--gld)}
+.fl input{width:18px;height:18px;margin:0;accent-color:var(--navy);cursor:pointer}
+.fl:has(input:focus-visible){outline:3px solid var(--gld);outline-offset:3px}
+.grid>.card .inner{height:100%}
+.t.list{align-self:stretch;text-align:left;font-size:15px;line-height:1.5}
+.t .li{display:block;margin:0 0 6px;break-inside:avoid}
+.card.wide .t.list{columns:2;column-gap:32px}
+@media (max-width:640px){.card.wide .t.list{columns:1}}
+.pcard .t.list{font-size:18px}
+.qsec{margin-top:72px}
+:root{--okc:#1f6b45;--okbg:#e2f3ea;--badc:#a8231b;--badbg:#fbe6e4}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--okc:#7fd6a4;--okbg:#17332a;--badc:#ff9d94;--badbg:#3a1c22}}
+:root[data-theme="dark"]{--okc:#7fd6a4;--okbg:#17332a;--badc:#ff9d94;--badbg:#3a1c22}
+.qpanel{max-width:620px;margin:0 auto}
+.qtop{display:flex;justify-content:space-between;align-items:center;gap:12px;margin:0 0 8px}
+.qtop .cnt{margin:0}
+.qq{font:600 22px/1.35 Georgia,"Times New Roman",serif;margin:6px 0 4px}
+.qq:focus{outline:none}
+.qhint{font-size:14px;color:var(--mute);margin:0 0 14px}
+.opts{display:grid;gap:10px}
+.opt{display:flex;align-items:flex-start;gap:12px;padding:14px 16px;border-radius:12px;border:1px solid var(--line);background:var(--card);cursor:pointer;transition:border-color .25s,background .25s,transform .25s}
+.opt:hover{border-color:var(--gld);transform:translateY(-2px)}
+.opt input{flex:none;width:18px;height:18px;margin:3px 0 0;accent-color:var(--navy);cursor:pointer}
+.opt:has(input:focus-visible){outline:3px solid var(--gld);outline-offset:2px}
+.opt.sel{background:var(--goldbg);border-color:var(--gld)}
+.otx{flex:1;font:400 16px/1.5 Georgia,"Times New Roman",serif}
+.tag{flex:none;font-size:12px;font-weight:600;padding:2px 9px;border-radius:999px;margin-top:2px}
+.opt.ok{background:var(--okbg);border-color:var(--okc);cursor:default}
+.opt.ok .tag{background:var(--okc);color:var(--card)}
+.opt.bad{background:var(--badbg);border-color:var(--badc);cursor:default}
+.opt.bad .tag{background:var(--badc);color:var(--card)}
+.opt.miss{border:2px dashed var(--okc);cursor:default}
+.opt.miss .tag{background:var(--okc);color:var(--card)}
+.opt:hover:has(input:disabled){transform:none;border-color:inherit}
+.qerr{color:var(--badc);font-size:14px;text-align:center;margin:12px 0 0}
+.fb{text-align:center;font-weight:600;margin:14px 0 0}
+.fb.ok{color:var(--okc)}.fb.bad{color:var(--badc)}
+.qscore{font:600 48px/1.1 Georgia,"Times New Roman",serif;color:var(--navy);margin:4px 0}
+.qres{text-align:center;margin-bottom:10px}
+.qres .qhint{margin:0}
+.qmiss{list-style:none;margin:10px 0 0;padding:0;display:grid;gap:10px}
+.qmiss li{padding:14px 16px;border-radius:12px;border:1px solid var(--line);background:var(--card)}
+.mq{display:block;font:600 16px/1.4 Georgia,"Times New Roman",serif}
+.ma{display:block;margin-top:6px;font-size:14px;color:var(--mute)}
+@media (prefers-reduced-motion:no-preference){.qin{animation:swap .45s cubic-bezier(.2,.8,.2,1)}}
+
+.sgrp{margin:6px 0 34px}
+.sgrp>.sec{margin-top:34px}
+.sn{display:block;font:600 12px/1 system-ui,sans-serif;letter-spacing:.18em;text-transform:uppercase;color:var(--gld);margin-bottom:6px}
+.cat{font:600 16px/1.3 Georgia,"Times New Roman",serif;color:var(--mute);margin:20px 0 10px;padding-left:10px;border-left:3px solid var(--gld)}
+.pfilt{flex-direction:column;align-items:stretch;gap:12px;text-align:left}
+.pfilt>.all{align-self:center}
+.fgrp{border:1px solid var(--line);border-radius:14px;padding:10px 12px;background:var(--card)}
+.fgrp .par{border:0;padding:4px 6px;background:transparent;font-weight:600}
+.fgrp .par:hover{transform:none}
+.fkids{display:flex;flex-wrap:wrap;gap:8px;margin:6px 0 2px 26px}
+.fkids .kid{font-size:14px;padding:6px 12px}
+
+.lbtn{display:flex;align-items:center;gap:16px;width:100%;text-align:left;font:inherit;color:var(--ink);padding:16px 18px;margin:0 0 12px;border-radius:14px;border:1px solid var(--line);background:var(--card);cursor:pointer;transition:border-color .25s,transform .25s,background .25s}
+.lbtn:hover:not(:disabled){border-color:var(--gld);transform:translateY(-2px)}
+.lbtn:focus-visible{outline:3px solid var(--gld);outline-offset:3px}
+.lbtn:disabled{cursor:not-allowed;opacity:.55}
+.lbtn .ln{flex:none;width:44px;height:44px;border-radius:50%;display:grid;place-items:center;background:var(--navy);color:var(--navytx);font:600 20px Georgia,serif}
+.lbtn:disabled .ln{background:var(--line);color:var(--mute)}
+.lbtn .lt2{flex:1}
+.lbtn .lt2 b{display:block;font:600 18px/1.3 Georgia,"Times New Roman",serif}
+.lbtn .lt2 span{font-size:14px;color:var(--mute)}
+.lbtn .ls{flex:none;font-size:13px;font-weight:600;padding:4px 12px;border-radius:999px;background:var(--goldbg);color:var(--navy)}
+.lbtn.done .ls{background:var(--okc);color:var(--card)}
+.lpanel{max-width:680px;margin:0 auto}
+.lpanel h3.sec{margin-top:18px}
+.lcd{padding:14px 16px;border-radius:12px;border:1px solid var(--line);background:var(--card);margin:0 0 12px}
+.lcd h5{margin:0 0 6px;font:600 17px/1.3 Georgia,"Times New Roman",serif;color:var(--navy)}
+.lcd .li{display:block;margin:2px 0}
+.lintro{color:var(--mute);margin:0 0 16px}
+@media (prefers-reduced-motion:no-preference){.lpanel{animation:cardin .5s both}}
+
+/* ===== Lessons v2 ===== */
+.lpanel{max-width:760px;margin:0 auto}
+.lbtn{--i:0}
+.dots{display:flex;gap:6px;justify-content:center;flex-wrap:wrap;margin:6px 0 16px}
+.dot{width:12px;height:12px;border-radius:50%;border:2px solid var(--line);background:transparent;padding:0;cursor:pointer;transition:transform .25s,background .25s,border-color .25s}
+.dot:hover{transform:scale(1.35);border-color:var(--gld)}
+.dot.seen{background:var(--line)}
+.dot.cur{background:var(--gld);border-color:var(--gld);transform:scale(1.35)}
+.dot.act{border-radius:3px;border-color:var(--navy)}
+.dot.qz{border-radius:3px;transform:rotate(45deg)}
+.dot.qz.cur{transform:rotate(45deg) scale(1.3)}
+.dot:focus-visible{outline:3px solid var(--gld);outline-offset:3px}
+.stage{min-height:380px;margin:0 0 6px}
+.lp{position:relative}
+.ph{font:600 26px/1.2 Georgia,"Times New Roman",serif;margin:4px 0 14px;color:var(--ink)}
+.ph::after{content:"";display:block;height:3px;width:56px;background:var(--gld);margin-top:8px}
+.lintro{color:var(--mute);margin:0 0 16px}
+.lfoot{margin:20px 0 0;padding:14px 16px;border-left:3px solid var(--gld);background:var(--goldbg);border-radius:0 12px 12px 0;font-size:15px}
+.hint{text-align:center;color:var(--mute);font-size:13px;margin:10px 0 0}
+
+/* hero */
+.lp-hero{min-height:380px;display:flex;flex-direction:column;justify-content:center;align-items:flex-start;padding:38px 34px;border-radius:20px;color:#fff;background:linear-gradient(135deg,#3a1670 0%,#5a2da8 55%,#7b45c9 100%);overflow:hidden;border-bottom:4px solid var(--gld)}
+.hn{position:absolute;right:14px;top:-34px;font:700 260px/1 Georgia,serif;color:#fff;opacity:.09;pointer-events:none}
+.hk{font:600 12px/1 system-ui,sans-serif;letter-spacing:.22em;text-transform:uppercase;color:#e8d9a6;margin:0 0 14px}
+.ht{font:600 clamp(28px,5vw,42px)/1.12 Georgia,"Times New Roman",serif;margin:0 0 14px;max-width:560px}
+.hline{display:block;height:3px;width:90px;background:#e0bf6a;margin:2px 0 18px;transform-origin:left}
+.hs{font:italic 18px/1.55 Georgia,serif;margin:0;max-width:520px;color:#f1e9ff}
+
+/* read */
+.rw{display:grid;grid-template-columns:minmax(0,1.6fr) minmax(0,1fr);gap:22px;align-items:start}
+@media (max-width:640px){.rw{grid-template-columns:1fr}}
+.rt p{margin:0 0 14px;font-size:17px;line-height:1.7}
+.rt p:first-child::first-letter{float:left;font:700 54px/0.9 Georgia,serif;color:var(--navy);padding:6px 10px 0 0}
+.rn{padding:16px 18px;border-radius:14px;background:var(--goldbg);border:1px solid var(--gld);position:relative}
+.rn b{display:block;font:600 12px/1 system-ui;letter-spacing:.16em;text-transform:uppercase;color:var(--gld);margin-bottom:8px}
+.rn p{margin:0;font-size:15px}
+
+/* quote */
+.lp-quote{padding:40px 30px 30px;border-radius:20px;background:var(--card);border:1px solid var(--line);text-align:center;overflow:hidden}
+.qm{position:absolute;left:50%;top:-30px;transform:translateX(-50%);font:700 190px/1 Georgia,serif;color:var(--gld);opacity:.22;pointer-events:none}
+.lp-quote blockquote{position:relative;margin:0 auto;max-width:600px;font:italic 21px/1.6 Georgia,serif}
+.lp-quote cite{display:block;margin-top:18px;font:600 13px/1.4 system-ui;letter-spacing:.1em;text-transform:uppercase;color:var(--gld);font-style:normal}
+.qn{margin:18px auto 0;max-width:560px;font-size:15px;color:var(--mute)}
+
+/* timeline */
+.tl{list-style:none;margin:0;padding:0 0 0 26px;position:relative}
+.tl::before{content:"";position:absolute;left:7px;top:6px;bottom:6px;width:3px;background:linear-gradient(var(--gld),var(--navy));border-radius:2px;transform-origin:top}
+.tl li{position:relative;margin:0 0 18px;padding:12px 16px;border-radius:12px;background:var(--card);border:1px solid var(--line)}
+.tl .td{position:absolute;left:-26px;top:16px;width:17px;height:17px;border-radius:50%;background:var(--card);border:4px solid var(--gld)}
+.tl b{display:block;font:600 17px Georgia,serif;color:var(--navy)}
+.tl p{margin:4px 0 0;font-size:15px}
+
+/* steps */
+.sl{display:grid;gap:10px}
+.sp{display:flex;gap:14px;align-items:flex-start;padding:12px 16px;border-radius:12px;background:var(--card);border:1px solid var(--line)}
+.sp p{margin:0}
+.sn2{flex:none;min-width:34px;height:34px;border-radius:50%;display:grid;place-items:center;background:var(--navy);color:var(--navytx);font:600 15px Georgia,serif}
+.sx{border-radius:12px;background:var(--card);border:1px solid var(--line);overflow:hidden;transition:border-color .25s}
+.sx.open{border-color:var(--gld)}
+.sxb{display:flex;align-items:center;gap:14px;width:100%;text-align:left;font:inherit;color:var(--ink);background:transparent;border:0;padding:11px 14px;cursor:pointer}
+.sxb:hover{background:var(--goldbg)}
+.sxb:focus-visible{outline:3px solid var(--gld);outline-offset:-3px}
+.sxt{flex:1;font-weight:600}
+.sxbody{display:grid;grid-template-rows:0fr;transition:grid-template-rows .35s}
+.sx.open .sxbody{grid-template-rows:1fr}
+.sxc{overflow:hidden}
+.sxc p{margin:0;padding:2px 16px 14px 62px;color:var(--mute)}
+
+/* facts */
+.fg{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:14px}
+.ft{padding:20px 18px;border-radius:16px;background:linear-gradient(160deg,var(--card),var(--goldbg));border:1px solid var(--line);text-align:center}
+.fv{display:block;font:700 38px/1.1 Georgia,serif;color:var(--navy);margin-bottom:6px}
+.ft span{font-size:14px;color:var(--mute)}
+
+/* reveal */
+.rg{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:14px}
+@media (max-width:560px){.rg{grid-template-columns:1fr}}
+.rv{perspective:900px;height:270px;padding:0;border:0;background:transparent;font:inherit;color:inherit;cursor:pointer;text-align:left}
+.rvi{display:block;position:relative;width:100%;height:100%;transform-style:preserve-3d;transition:transform .6s cubic-bezier(.3,.8,.3,1)}
+.rv.on .rvi{transform:rotateY(180deg)}
+.rvf,.rvb{position:absolute;inset:0;backface-visibility:hidden;-webkit-backface-visibility:hidden;border-radius:16px;padding:18px;display:flex;flex-direction:column}
+.rvf{background:var(--cf);color:#fff;justify-content:center;align-items:center;text-align:center;border-bottom:4px solid var(--gld)}
+.rvf b{font:600 22px/1.25 Georgia,serif}
+.rvf i{margin-top:10px;font-style:normal;font-size:12px;letter-spacing:.14em;text-transform:uppercase;color:#e8d9a6}
+.rvb{transform:rotateY(180deg);background:var(--card);border:2px solid var(--gld);font-size:14.5px;line-height:1.55;overflow:auto;justify-content:flex-start}
+.rv:focus-visible{outline:3px solid var(--gld);outline-offset:3px;border-radius:16px}
+.rv:hover .rvf{filter:brightness(1.12)}
+
+/* split */
+.sg{display:grid;grid-template-columns:1fr auto 1fr;gap:14px;align-items:stretch}
+@media (max-width:640px){.sg{grid-template-columns:1fr}.vs{justify-self:center}}
+.sa,.sb{padding:20px;border-radius:16px;border:1px solid var(--line);background:var(--card)}
+.sa{border-top:5px solid var(--navy)}.sb{border-top:5px solid var(--gld)}
+.sa h4,.sb h4{margin:0 0 8px;font:600 20px Georgia,serif}
+.sa p,.sb p{margin:0;font-size:16px}
+.vs{align-self:center;width:44px;height:44px;border-radius:50%;display:grid;place-items:center;background:var(--gld);color:#fff;font:italic 600 16px Georgia,serif}
+
+/* roster */
+.ro{list-style:none;margin:0;padding:0;display:grid;gap:8px}
+.ro.c2{grid-template-columns:repeat(2,minmax(0,1fr))}
+@media (max-width:560px){.ro.c2{grid-template-columns:1fr}}
+.ro li{display:flex;gap:12px;align-items:center;padding:10px 14px;border-radius:10px;background:var(--card);border:1px solid var(--line);transition:transform .2s,border-color .2s}
+.ro li:hover{transform:translateX(4px);border-color:var(--gld)}
+.rn2{flex:none;width:28px;height:28px;border-radius:50%;display:grid;place-items:center;background:var(--goldbg);color:var(--navy);font:600 14px Georgia,serif}
+
+/* mini quiz */
+.lp-act{padding:20px;border-radius:20px;background:linear-gradient(170deg,var(--card),var(--goldbg));border:2px dashed var(--gld)}
+.abadge{display:inline-block;font:600 11px/1 system-ui;letter-spacing:.16em;text-transform:uppercase;background:var(--gld);color:#fff;padding:6px 12px;border-radius:999px;margin-bottom:10px}
+.abar{display:flex;gap:10px;flex-wrap:wrap;align-items:center;justify-content:center;margin-top:18px}
+.ascore{font-size:18px;min-width:150px;text-align:center;color:var(--mute)}
+.ascore.show b{font:700 26px Georgia,serif;color:var(--navy)}
+.ascore.perfect b{color:var(--okc)}
+.zones{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:12px;margin-bottom:14px}
+.zone{border-radius:14px;background:var(--card);border:1px solid var(--line);padding:10px}
+.zone h5{margin:0 0 8px;font:600 15px Georgia,serif;color:var(--navy)}
+.zbox{min-height:54px;display:flex;flex-wrap:wrap;gap:6px;padding:6px;border-radius:10px;border:2px dashed var(--line);transition:background .2s,border-color .2s;align-content:flex-start}
+.zbox.over,.tray.over{background:var(--goldbg);border-color:var(--gld)}
+.lp-act.selecting .zbox,.lp-act.selecting .tray{border-color:var(--gld);cursor:pointer}
+.zbox:focus-visible,.tray:focus-visible{outline:3px solid var(--gld);outline-offset:2px}
+.tray{display:flex;flex-wrap:wrap;gap:8px;padding:12px;border-radius:14px;background:var(--card);border:2px dashed var(--line);min-height:56px;justify-content:center}
+.empty{color:var(--mute);font-size:14px;align-self:center}
+.chip{touch-action:none;user-select:none;-webkit-user-select:none;font:inherit;font-size:14.5px;padding:8px 14px;border-radius:999px;border:1px solid var(--navy);background:var(--card);color:var(--ink);cursor:grab;transition:transform .2s,background .2s,box-shadow .2s}
+.chip:hover:not(:disabled){transform:translateY(-2px);box-shadow:0 4px 10px rgba(60,20,110,.18)}
+.chip.sel{background:var(--navy);color:var(--navytx);box-shadow:0 0 0 3px var(--gld)}
+.chip.lift{opacity:.35}
+.chip.ok{background:var(--okbg);border-color:var(--okc)}
+.chip.bad{background:var(--badbg);border-color:var(--badc)}
+.chip:disabled{cursor:default}
+.chip.ghost{position:fixed;z-index:200;pointer-events:none;transform:translate(-50%,-50%) scale(1.06);box-shadow:0 10px 24px rgba(40,10,80,.35);background:var(--navy);color:var(--navytx)}
+.slots{list-style:none;margin:0 0 14px;padding:0;display:grid;gap:8px}
+.slot{display:flex;align-items:center;gap:12px}
+.slotn{flex:none;width:32px;height:32px;border-radius:50%;display:grid;place-items:center;background:var(--navy);color:var(--navytx);font:600 15px Georgia,serif}
+.zbox.one{flex:1;min-height:46px}
+.fillp{font-size:17px;line-height:2.4;margin:0 0 14px}
+.zbox.inl{display:inline-flex;vertical-align:middle;min-width:130px;min-height:38px;padding:2px 4px;margin:0 3px;align-items:center}
+.zbox.hasone{border-style:solid;border-color:var(--gld)}
+/* match */
+.mw{position:relative;display:grid;grid-template-columns:1fr 1fr;gap:70px;margin-bottom:6px}
+@media (max-width:560px){.mw{gap:40px}}
+.mcol{display:grid;gap:10px;align-content:start}
+.ml{position:absolute;inset:0;width:100%;height:100%;pointer-events:none;overflow:visible}
+.ml path{fill:none;stroke:var(--gld);stroke-width:3;stroke-linecap:round}
+.ml path.ok{stroke:var(--okc)}.ml path.bad{stroke:var(--badc)}
+.mb{font:inherit;font-size:15px;text-align:left;padding:11px 14px;border-radius:12px;border:1px solid var(--line);background:var(--card);color:var(--ink);cursor:pointer;transition:transform .2s,border-color .2s,background .2s;min-height:48px}
+.mb:hover{border-color:var(--gld);transform:translateY(-2px)}
+.mb.sel{background:var(--navy);color:var(--navytx);border-color:var(--navy)}
+.mb.lk{border-color:var(--gld);background:var(--goldbg)}
+.mb.ok{background:var(--okbg);border-color:var(--okc)}.mb.bad{background:var(--badbg);border-color:var(--badc)}
+.mb:focus-visible{outline:3px solid var(--gld);outline-offset:2px}
+/* memory */
+.mg{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:10px}
+@media (max-width:480px){.mg{grid-template-columns:repeat(3,minmax(0,1fr))}}
+.mc{perspective:700px;aspect-ratio:1/0.8;padding:0;border:0;background:transparent;cursor:pointer;font:inherit}
+.mci{display:block;position:relative;width:100%;height:100%;transform-style:preserve-3d;transition:transform .45s}
+.mc.on .mci,.mc.done .mci{transform:rotateY(180deg)}
+.mcf,.mcb{position:absolute;inset:0;backface-visibility:hidden;-webkit-backface-visibility:hidden;border-radius:12px;display:grid;place-items:center;text-align:center;padding:6px}
+.mcf{background:var(--cf);color:#e8d9a6;font:600 20px Georgia,serif;letter-spacing:.1em;border-bottom:3px solid var(--gld)}
+.mcb{transform:rotateY(180deg);background:var(--card);border:2px solid var(--gld);font-size:13.5px;line-height:1.25;font-weight:600}
+.mcb.a{background:var(--goldbg)}
+.mc.done .mcb{border-color:var(--okc);background:var(--okbg)}
+.mc:focus-visible{outline:3px solid var(--gld);outline-offset:2px;border-radius:12px}
+
+@media (prefers-reduced-motion:no-preference){
+  @keyframes rise{from{opacity:0;transform:translateY(22px)}to{opacity:1;transform:none}}
+  @keyframes pgin{from{opacity:0;transform:translateX(28px) scale(.985)}to{opacity:1;transform:none}}
+  @keyframes zoomin{from{opacity:0;transform:scale(.92)}to{opacity:1;transform:none}}
+  @keyframes drawline{from{transform:scaleX(0)}to{transform:scaleX(1)}}
+  @keyframes drawv{from{transform:scaleY(0)}to{transform:scaleY(1)}}
+  @keyframes slideL{from{opacity:0;transform:translateX(-40px)}to{opacity:1;transform:none}}
+  @keyframes slideR{from{opacity:0;transform:translateX(40px)}to{opacity:1;transform:none}}
+  @keyframes popin{from{opacity:0;transform:scale(.6)}to{opacity:1;transform:none}}
+  @keyframes shine{0%{background-position:-200% 0}100%{background-position:200% 0}}
+  @keyframes floatn{0%,100%{transform:translateY(0)}50%{transform:translateY(-14px)}}
+  .stage.in{animation:pgin .5s cubic-bezier(.2,.8,.2,1) both}
+  .lp [data-s]{animation:rise .65s cubic-bezier(.2,.8,.2,1) both;animation-delay:calc(var(--i)*90ms + 120ms)}
+  .lbtn{animation:rise .5s both;animation-delay:calc(var(--i)*60ms)}
+  .lp-hero{animation:zoomin .7s both}
+  .hn{animation:floatn 7s ease-in-out infinite}
+  .hline{animation:drawline .9s .45s both}
+  .lp-quote .qm{animation:popin .8s both}
+  .tl::before{animation:drawv 1.2s both}
+  .tl .td{animation:popin .5s both;animation-delay:calc(var(--i)*90ms + 250ms)}
+  .sa{animation:slideL .7s both}.sb{animation:slideR .7s .15s both}
+  .vs{animation:popin .6s .5s both}
+  .ft{animation:popin .6s both;animation-delay:calc(var(--i)*110ms)}
+  .ft [data-s]{animation:none}
+  .rv{animation:rise .6s both;animation-delay:calc(var(--i)*80ms)}
+  .ro li{animation:slideR .5s both;animation-delay:calc(var(--i)*55ms)}
+  .rn{animation:slideR .8s .3s both}
+  .lp-act{animation:zoomin .5s both}
+  .chip.ghost{transition:none}
+  .ascore.show{animation:popin .45s both}
+  .ascore.perfect b{background:linear-gradient(90deg,var(--okc),var(--gld),var(--okc));background-size:200% 100%;-webkit-background-clip:text;background-clip:text;color:transparent;animation:shine 2.4s linear infinite}
+}
+.lbtn.final{border:2px solid var(--gld);background:linear-gradient(160deg,var(--card),var(--goldbg))}.lbtn.final .ln{background:var(--gld)}</style>
 </head>
 <body>
 <section id="v-home" class="home">
@@ -207,7 +491,7 @@ main{max-width:920px;margin:0 auto;padding:30px 18px 40px}
 <div class="wmw" aria-hidden="true"><span class="wm">ΑΦΔ</span></div>
 <div class="hero-in">
 <a class="brand" href="#home"><img id="herologo" alt="Alpha Phi Delta seal"><span><b>Alpha Phi Delta</b><i>ΑΦΔ study guide</i></span></a>
-<nav class="tabs" id="tabs" aria-label="Study guide sections"><a href="#home">Home</a><div class="dd" id="dd"><button class="ddb" id="ddb" type="button" aria-haspopup="true" aria-expanded="false" aria-controls="ddm">Learn<span class="car" aria-hidden="true"></span></button><div class="ddm" id="ddm" hidden><a href="#cards">Flashcards</a><a href="#practice">Practice</a><a href="#greek">Greek Alphabet</a><a href="#oath">Oath, Doctrine, and Keynote</a></div></div></nav>
+<nav class="tabs" id="tabs" aria-label="Study guide sections"><a href="#home">Home</a><div class="dd" id="dd"><button class="ddb" id="ddb" type="button" aria-haspopup="true" aria-expanded="false" aria-controls="ddm">Learn<span class="car" aria-hidden="true"></span></button><div class="ddm" id="ddm" hidden><a href="#cards">Flashcards</a><a href="#practice">Practice</a><a href="#lessons">Lessons</a><a href="#greek">Greek Alphabet</a><a href="#oath">Oath, Doctrine, and Keynote</a></div></div></nav>
 </div>
 </header>
 <main id="main">
@@ -215,24 +499,34 @@ main{max-width:920px;margin:0 auto;padding:30px 18px 40px}
 <h2 class="ttl">Flashcards</h2>
 <p class="lead">Tap a card to flip it and see the answer.</p>
 <div class="bar"><button class="btn pri" id="all" type="button">Flip all</button><button class="btn" id="reset" type="button">Reset</button></div>
-<div class="chips" role="group" aria-label="Filter flashcards"><button class="chip on" type="button" data-f="all" aria-pressed="true">All</button><button class="chip" type="button" data-f="editions" aria-pressed="false">Editions</button><button class="chip" type="button" data-f="symbols" aria-pressed="false">Symbols</button></div>
+<div class="chips" id="chips" role="group" aria-label="Filter flashcards by section"></div>
 <div id="root"></div>
 </section>
 <section id="v-practice" class="view" hidden>
 <h2 class="ttl">Practice</h2>
-<p class="lead">Cards come up in random order.</p>
+<h3 class="sec">Flashcard Practice</h3>
+<p class="lead">Choose which sections to practice. Cards come up in random order.</p>
 <div class="pbox">
+<fieldset class="filt pfilt" id="pfilt"><legend class="sr">Sections to practice</legend></fieldset>
 <p class="cnt" id="cnt"></p>
 <div class="prog"><i id="pf"></i></div>
 <div id="pwrap" class="pwrap"><button type="button" class="card pcard" id="pc" aria-pressed="false"><span class="inner"><span class="face front"><span class="q" id="pq"></span><span class="tap">Tap to flip</span></span><span class="face back"><span class="lab" id="pl"></span><span class="t" id="pa"></span></span></span></button></div>
 <div class="bar center"><button class="btn" id="prev" type="button">Previous</button><button class="btn pri" id="next" type="button">Next</button><button class="btn" id="shuf" type="button">Reshuffle</button></div>
 <p class="hint">Use the left and right arrow keys to move between cards.</p>
 </div>
+<h3 class="sec qsec">Review Quiz</h3>
+<p class="lead">Pick the sections you want to be quizzed on. Questions and answer choices are shuffled every time you start.</p>
+<div id="quiz"></div>
 </section>
 <section id="v-greek" class="view" hidden>
 <h2 class="ttl">Greek Alphabet</h2>
-<p class="lead">Flip the card, then tap a letter to reveal its name. Or reveal them all at once.</p>
+<p class="lead">Tap a letter to reveal its name, or reveal them all at once.</p>
 <div id="greekroot"></div>
+</section>
+<section id="v-lessons" class="view" hidden>
+<h2 class="ttl">Lessons</h2>
+<p class="lead">Eight lessons that build on each other. Read a lesson, then pass its quiz with at least 80% to unlock the next one.</p>
+<div id="lroot"></div>
 </section>
 <section id="v-oath" class="view" hidden>
 
@@ -248,7 +542,7 @@ var S=[
 ["1","Pledge’s Oath","I do hereby solemnly pledge myself<br>to Alpha Phi Delta Fraternity,<br>to keep its secrets, its rules,<br>and to obey its constitution.<br>I further promise to accept<br>no other bid from a college fraternity,<br>to return the Pledge Pin when requested,<br>and to do all in my power<br>to learn and obey<br>the ideals which Alpha Phi Delta exemplifies.<br>On my word of honor,<br>I promise to be faithful to my pledge.",1],
 ["2","Membership Doctrine","Membership in Alpha Phi Delta is eternal<br>and carries with it the obligation<br>of permanent activity and support.",2],
 ["3","Keynote of the Fraternity","Friendship"]]},
-{t:"Editions",c:[
+{sec:"9",t:"Editions",c:[
 ["4","First edition","1930, Dr. Peter Sammartino"],
 ["5","Second edition","1940, Dr. Frank Brescia"],
 ["6","Third edition","1952, Central Office"],
@@ -258,27 +552,32 @@ var S=[
 ["10","Seventh edition","1992, Jerry R. Britton"],
 ["11","Eighth edition","2001, Felipe Martinez, Jr."],
 ["12","Ninth edition","2007, Rev. James Lentini"]]},
-{t:"Symbols",c:[
+{sec:"5",t:"Symbols",c:[
 ["13","The Eagle","The symbol of victory"],
 ["14","The Fasces","The symbol of state authority"],
 ["15","The Key","The symbol of dominion"],
 ["16","The Star","The symbol of divine guidance"],
 ["17","The Scroll","The symbol of life and time"],
 ["18","The Torch","The symbol of immortality"]]},
+{sec:"1",t:"Elements of a Pledge Period",c:[["20", "Three Aims", "<span class=\"li\">1. To meet and learn about his future brothers</span><span class=\"li\">2. To learn about Alpha Phi Delta</span><span class=\"li\">3. To work together with his pledge brothers and demonstrate the qualities of brotherhood</span>", 0, "list"], ["21", "Evaluation", "A pledge’s process is evaluated by his attitude and conduct, participation in campus and chapter activities, scholastic record, and willingness to accept responsibilities"], ["22", "The <i>Dokime</i>", "In Latin, the words “doce me” mean “teach me”. The Greek word “dokime” means “the test”."], ["23", "The Pledge Book", "The Chapter Pledge Book (mostly known as Plate Register) is a bound volume that is to be kept by each undergraduate chapter as a permanent record of every Alpha Phi Delta pledge and pledge class coming through that chapter"], ["24", "A Pledge Book", "Each member of a pledge class keeps a Pledge Book, and it is the Chapter’s property until a prospective member’s initiation"], ["25", "The Pledge Pin", "It is worn until the right to wear the Fraternity Pin is earned, and symbolizes the pledge’s friendship with Alpha Phi Delta and his desire to join"], ["26", "The Eight Pledge Responsibilities", "<span class=\"li\">1. Improving his scholastic activity</span><span class=\"li\">2. Support his college and its activities</span><span class=\"li\">3. Help his community through his chapter</span><span class=\"li\">4. Know the information contained in the <i>Dokime</i></span><span class=\"li\">5. Know the traditions of Alpha Phi Delta</span><span class=\"li\">6. Know the history of the chapter</span><span class=\"li\">7. Learn about the brothers of the chapter</span><span class=\"li\">8. Learn about the members of your pledge class</span>", "w", "list"], ["27", "The Pledge Ten Commandments", "In earlier years, “The Pledge Responsibilities” used to be called “The Pledge Ten Commandments” in the 1960 edition of <i>The Dokime</i>", "w"]]},
 {t:"Greek alphabet",c:[["19","Greek Alphabet","GREEK",1]]}
 ];
+var SEC=[["1", "Pledging Alpha Phi Delta"], ["2", "The American Fraternity System"], ["3", "The History of Alpha Phi Delta"], ["4", "Ethics and Values"], ["5", "Hallmarks and Heraldry"], ["6", "National Governance"], ["7", "The Realm of Alpha Phi Delta"], ["8", "Scholarship, Leadership and Achievement"], ["9", "Reference: Editions, Alphabet and Publications"]];
+S.splice.apply(S,[1,0].concat([{"sec": "1", "t": "The Pledge Program", "c": [["", "How does the pledge program begin?", "With the Baptism Ceremony."], ["", "The Ten Key Objectives of the Pledge Program", "<span class=\"li\">1. Learn the information contained in <i>The Dokime</i></span><span class=\"li\">2. Learn the fraternity songs (especially <i>Our Fraternity</i> and <i>Fraternity Sweetheart</i>)</span><span class=\"li\">3. Sponsor a community service (or school-related) project</span><span class=\"li\">4. Learn the names of the National and District Officers</span><span class=\"li\">5. Learn the names of the officers of the Chapter that you are pledging</span><span class=\"li\">6. Learn the names of District entities</span><span class=\"li\">7. Learn the names of all active Chapters</span><span class=\"li\">8. Complete a project for the Chapter</span><span class=\"li\">9. Meet with each chapter brother; acquire his complete signature</span><span class=\"li\">10. Complete the Italian Cultural Assignment</span>", "w", "list"], ["", "What does Alpha Phi Delta offer you?", "<span class=\"li\">1. The advantages of a national fraternity</span><span class=\"li\">2. The ability to understand the values that took the world out of the dark ages by way of the Italian Renaissance</span><span class=\"li\">3. Brotherly companionship, as well as fraternal correction</span><span class=\"li\">4. Exposure to culture</span><span class=\"li\">5. The development of certain human traits brought forth by camaraderie, notably frankness and honesty with one’s brothers</span>", "w", "list"], ["", "What are you called to offer Alpha Phi Delta?", "<span class=\"li\">1. Be willing to accept responsibility</span><span class=\"li\">2. Not be a snob</span><span class=\"li\">3. Be honest and forthright</span><span class=\"li\">4. Be socially and morally disciplined</span><span class=\"li\">5. Work cooperatively with the fraternity</span><span class=\"li\">6. Give Alpha Phi Delta a good image on your campus</span><span class=\"li\">7. Remember the democratic ideals of our nation and our fraternity</span><span class=\"li\">8. Be open-minded</span><span class=\"li\">9. Be a good student (or at least a hard working one)</span><span class=\"li\">10. Strive to be a cultured gentleman</span>", "w", "list"]]}]));
+S.push.apply(S,[{"sec": "2", "t": "Firsts and Triads", "c": [["", "First Greek letter organization", "Phi Beta Kappa, founded in 1776 at the College of William and Mary in Williamsburg, Virginia."], ["", "First American social fraternity", "Kappa Alpha Society, founded in the fall of 1825 at Union College."], ["", "The Union Triad", "<span class=\"li\">Kappa Alpha Society (1825)</span><span class=\"li\">Sigma Phi (1827)</span><span class=\"li\">Delta Phi (1827)</span>", 0, "list"], ["", "The Second Union Triad", "<span class=\"li\">Psi Upsilon (1833)</span><span class=\"li\">Chi Psi (1841)</span><span class=\"li\">Theta Delta Chi (1847)</span>", 0, "list"], ["", "The Miami Triad", "<span class=\"li\">Beta Theta Pi (1839)</span><span class=\"li\">Phi Delta Theta (1848)</span><span class=\"li\">Sigma Chi (1855)</span>", 0, "list"], ["", "The Lexington Triad", "<span class=\"li\">Alpha Tau Omega (1865)</span><span class=\"li\">Sigma Nu (1869)</span><span class=\"li\">Kappa Alpha Order (1865)</span>", 0, "list"], ["", "The first sorority", "Adelphian, founded in 1851 at Wesleyan Female College. It later took the name Alpha Delta Phi."]]},{"sec": "2", "t": "Growth and Today", "c": [["", "The Golden Age of Fraternities", "1850–1900. The system grew in leaps and bounds, and over 30 national fraternities were born in that period."], ["", "Where “rushing” comes from", "In the 19th century, fraternity members would collectively “rush” to the train station to meet incoming first-year students."], ["", "“Rushing” and pledge pins", "To claim a new student, a brother would pin the fraternity’s colors on him as a lapel pin. These later developed into pledge pins."], ["", "What happened in 1945", "Under the G.I. Bill, men returning from service received government aid to attend college, which boosted fraternity membership for years."], ["", "Act of Congress in 1998", "“The Freedom of Association Act,” which supports the associational rights of fraternities at schools receiving federal aid."], ["", "U.S. Presidents who were fraternity men", "Since 1900, 14 of 22 United States Presidents."], ["", "Alpha Phi Delta’s graduation rate", "81% (2023), which is 25 percentage points above the 56% U.S. all-male average."], ["", "Alpha Phi Delta’s average GPA", "3.27 for members in 2023, with 2023-24 initiates averaging 3.31."]]},{"sec": "3", "t": "Founding", "c": [["", "Alpha Phi Delta grew out of", "<i>Il Circolo Italiano</i> of Syracuse University, formed on November 5, 1913."], ["", "Founding date of Alpha Phi Delta", "November 5, 1914, at Syracuse University."], ["", "The Seven Founders", "<span class=\"li\">Cesidio A. Guarini</span><span class=\"li\">Ferdinand F. DiBartolo</span><span class=\"li\">Anthony T. Frascati</span><span class=\"li\">Nicholas Frunzi</span><span class=\"li\">Otto Gelormini</span><span class=\"li\">Dominic T. Ciolli</span><span class=\"li\">Joseph Cangiamila</span>", 0, "list"], ["", "First president of Alpha Phi Delta", "Nicholas Frunzi."]]},{"sec": "3", "t": "Becoming a National Fraternity", "c": [["", "The Italian fraternity at Columbia", "Sigma Gamma Phi, founded in November 1915. It merged with Alpha Phi Delta in 1916."], ["", "Where the merger meeting was held", "Syracuse University, in June 1916. Syracuse became the Alpha Chapter and Columbia the Beta Chapter."], ["", "First National President (Grand Consul)", "Salvatore LaCorte of Beta."], ["", "When membership opened to non-Italians", "1965. On September 2, the National Council approved allowing non-Italians into membership."], ["", "The first three National Awards (1940)", "<span class=\"li\">Most Improved Chapter</span><span class=\"li\">Outstanding Undergraduate</span><span class=\"li\">Outstanding Alumnus</span>", 0, "list"]]},{"sec": "3", "t": "History Books and Remembrance", "c": [["", "Earliest written history of the Fraternity", "Written by hand in 1929 by Founder Dominic Ciolli. It covers 1911 to the end of World War I."], ["", "Dedication of the 1973 <i>History</i>", "Written by Rev. Salvatore J. Federici (Psi ’33), a long-serving National Chaplain."], ["", "Authors of <i>The History of Alpha Phi Delta</i>", "<span class=\"li\">1973: Stanley W. Raffa, PNP (Delta ’49)</span><span class=\"li\">2000: John Russo (Psi ’72)</span><span class=\"li\">2015: Ronald Smé (Beta Sigma ’64)</span>", 0, "list"], ["", "Deceased Brother Remembrance Day", "August 12, the date of the death of Joseph Cangiamila, the first deceased member."], ["", "Fraternal Days of Special Observance", "<span class=\"li\">February 19: Past National Presidents Day</span><span class=\"li\">August 12: Deceased Brother Remembrance Day</span><span class=\"li\">September 2: Open Door Policy Anniversary Day</span><span class=\"li\">October 12: Columbus Day</span><span class=\"li\">November 5: Founders Day</span><span class=\"li\">December 12: Brother Frank Sinatra’s Birthday</span><span class=\"li\">Anniversary Day: the chapter’s chartering date</span>", "w", "list"]]},{"sec": "4", "t": "The Creed", "c": [["", "The Creed of Alpha Phi Delta", "<span class=\"li\">1. The unstinted contribution to the development of democratic ideals.</span><span class=\"li\">2. The instillation in the minds of its members of the need to foster and develop the highest and noblest traits of man.</span><span class=\"li\">3. The development of the common bond.</span><span class=\"li\">4. The development and perpetuation of friendships formed during college days.</span><span class=\"li\">5. The demonstration that pride in ancestry can strengthen one’s faith in America.</span><span class=\"li\">6. The knowledge that culture can be and is essential to civilization.</span><span class=\"li\">7. The advancement of the fact that our brotherhood — Italian by history, American by loyalty — is a family bound by an oath of mutual respect, uniting members of all chapters, eras, and backgrounds.</span>", "w", "list"]]},{"sec": "4", "t": "The Cardinal Virtues", "c": [["", "The four Cardinal Virtues", "<span class=\"li\">Prudence</span><span class=\"li\">Fortitude</span><span class=\"li\">Justice</span><span class=\"li\">Temperance</span>", 0, "list"], ["", "Prudence", "The ability to judge between virtuous and vicious actions at a given time and place."], ["", "Fortitude", "Having and using “the strength to do what is right.” Latin <i>fortitudo</i>, meaning courage."], ["", "Justice", "To render every man his due."], ["", "Temperance", "Moderation in all that one does."]]},{"sec": "4", "t": "Our Italian Heritage", "c": [["", "College enrollment in 1914", "Less than half of one percent of America’s 92,000,000 people were enrolled in college."], ["", "The Alpha view of Italian heritage", "Italy and the immigrant heritage: Italian language, family, food, and customs."], ["", "The Beta view of Italian heritage", "Imperial Rome. It took precedence because most early Presidents came from Beta Chapter."], ["", "Roman officer titles after the merger", "<span class=\"li\">President became Consul</span><span class=\"li\">Vice President became Pro-Consul</span><span class=\"li\">Treasurer became Queastor</span><span class=\"li\">Secretary became Tribune</span>", 0, "list"], ["", "Chapter Assessment", "The annual fee a Chapter pays to the National Fraternity. It is a flat fee set by the National Council, pro-rated for Chapters of ten brothers or less."], ["", "Your first act of fraternalism", "Timely payment of your initiation fee."]]},{"sec": "5", "t": "Colors, Flower and Motto", "c": [["", "The Fraternity colors", "Purple and white. Purple is the royal color of Rome; white is the symbol of purity, innocence and spotlessness."], ["", "The Fraternity flower", "The white carnation (<i>garofano</i>), the national flower of Italy when the Fraternity was founded. It is a sign of a faithful disposition."], ["", "The Fraternity motto", "<i>Faciamus</i> — Latin for “we do.” It replaced the first motto, “Brothers unto the Altars.”"], ["", "Where the Coat of Arms is defined", "In the Constitution of Alpha Phi Delta."]]},{"sec": "5", "t": "Songs, Poem and Prayer", "c": [["", "Official song", "“Alpha Phi Delta Rose,” by Gabriel Jacoby, Phi."], ["", "Official poem", "“From a Seed,” by Salvatore Spalla."], ["", "The most commonly sung songs", "“Our Fraternity” and “Fraternity Sweetheart,” both written by Joseph La Porta, Eta."], ["", "The Fraternity Prayer", "Written by Brother Raymond Paolini of Epsilon Chapter. It has a long form and a short form (most commonly used)."]]},{"sec": "6", "t": "The National Council", "c": [["", "Form of governance", "A parliamentary system. The National Council combines executive, legislative and judicial functions."], ["", "Chairman of the National Council", "The National President."], ["", "Delegates per chapter", "Two delegates from each Chapter."], ["", "Supremacy of the National Council", "It is the Fraternity’s supreme executive, legislative and judicial body. All its decisions are final and not subject to review."], ["", "The most powerful committee", "The Executive Committee, composed of the District Governors and the National Officers."], ["", "Voting members of the Executive Committee", "<span class=\"li\">National Vice President</span><span class=\"li\">Vice President for Undergraduate Affairs</span><span class=\"li\">Vice President for Alumni Affairs</span><span class=\"li\">The District Governors</span><span class=\"li\">The National President votes only to break a tie or change the outcome of a vote.</span>", "w", "list"]]},{"sec": "6", "t": "National Officers and Offices", "c": [["", "The elected National Officers", "<span class=\"li\">National President</span><span class=\"li\">National Vice President</span><span class=\"li\">Vice President for Alumni Affairs</span><span class=\"li\">Vice President for Undergraduate Affairs</span>", 0, "list"], ["", "Officer charged with reactivating chapters", "The Vice President for Expansion."], ["", "The “Office” held jointly", "Central Office, formed by the National Secretary and the National Treasurer."], ["", "Number of Districts", "11 Districts, each led by a District Governor."]]},{"sec": "6", "t": "National Awards", "c": [["", "The eight National Awards", "<span class=\"li\">1. Outstanding Undergraduate</span><span class=\"li\">2. Outstanding Alumnus</span><span class=\"li\">3. Outstanding District (added 2006)</span><span class=\"li\">4. Outstanding Chapter</span><span class=\"li\">5. Most Improved Chapter</span><span class=\"li\">6. Outstanding Alumni Club (added 1970)</span><span class=\"li\">7. Outstanding Alumni Association (added 2016)</span><span class=\"li\">8. Outstanding Community Service (established 1994)</span>", "w", "list"], ["", "The award open to individuals, chapters, clubs and associations", "Outstanding Community Service."]]},{"sec": "7", "t": "Districts and Entities", "c": [["", "Geographic areas of Chapters", "Districts. They were first created in 1924."], ["", "The Districts of Alpha Phi Delta", "<span class=\"li\">Central Pennsylvania</span><span class=\"li\">Connecticut</span><span class=\"li\">Delaware Valley</span><span class=\"li\">Florida</span><span class=\"li\">Hudson Valley</span><span class=\"li\">Long Island</span><span class=\"li\">Midwest</span><span class=\"li\">New York City</span><span class=\"li\">North Jersey</span><span class=\"li\">Rocky Mountain</span><span class=\"li\">Upstate New York</span>", "w", "list"], ["", "Title of a District’s official representative", "District Governor."], ["", "The three types of entities", "<span class=\"li\">Chapters</span><span class=\"li\">Alumni Clubs</span><span class=\"li\">Alumni Associations</span>", 0, "list"], ["", "What makes a chapter active", "At least one (1) member paying requisite fees to the National Fraternity."], ["", "The seven Chapter officers", "<span class=\"li\">President</span><span class=\"li\">Vice President</span><span class=\"li\">Secretary</span><span class=\"li\">Treasurer</span><span class=\"li\">Pledgemaster</span><span class=\"li\">Historian</span><span class=\"li\">Chaplain</span>", 0, "list"], ["", "Term of office for Chapter officers", "One calendar year, January 1 to December 31."], ["", "The first Alumni Club", "Cleveland Alumni Club, 1928, made up of recent alumni from Kappa Chapter (Case Western Reserve)."]]},{"sec": "7", "t": "National Meetings and Awards", "c": [["", "Central Office", "Camden, Delaware. It is made up of the National Secretary and Treasurer."], ["", "Annual Meeting of the National Council", "Held between January 15 and March 31, with at least 90 days’ notice."], ["", "The National Convention", "Held between June 30 and September 15 each year."], ["", "The committee that meets at the National Convention", "The Executive Committee."], ["", "The four special awards", "<span class=\"li\">Expansion Award</span><span class=\"li\">Vincent Larcy Communication Award</span><span class=\"li\">The Pioneer Award</span><span class=\"li\">Lifetime Achievement Award</span>", 0, "list"], ["", "Lifetime Achievement Award", "The Fraternity’s highest honor, awarded rarely to a brother who has faithfully served Alpha Phi Delta in an exceptional manner."]]},{"sec": "7", "t": "Chapters and Alumni", "c": [["", "The first 24 chapters", "<span class=\"li\">Alpha: Syracuse University</span><span class=\"li\">Beta: Columbia University</span><span class=\"li\">Gamma: Yale University</span><span class=\"li\">Delta: Polytechnic University</span><span class=\"li\">Epsilon: SUNY at Buffalo</span><span class=\"li\">Zeta: Rensselaer Polytechnic Institute</span><span class=\"li\">Eta: City College of New York</span><span class=\"li\">Theta: New York University (The Bronx)</span><span class=\"li\">Iota: Union College</span><span class=\"li\">Kappa: Case Western Reserve</span><span class=\"li\">Lambda: University of Pennsylvania</span><span class=\"li\">Mu: Cornell University</span><span class=\"li\">Nu: University of Pittsburgh</span><span class=\"li\">Xi: Ohio State University</span><span class=\"li\">Omicron: University of Michigan</span><span class=\"li\">Pi: West Virginia University</span><span class=\"li\">Rho: Carnegie-Mellon Institute</span><span class=\"li\">Sigma: Boston University</span><span class=\"li\">Tau: Massachusetts Institute of Technology</span><span class=\"li\">Upsilon: Harvard University</span><span class=\"li\">Phi: University of Alabama</span><span class=\"li\">Chi: Pennsylvania State University</span><span class=\"li\">Psi: Duquesne University</span><span class=\"li\">Omega: University of Rochester</span>", "w", "list"], ["", "The newest Chapter", "Epsilon Sigma, State University of New York at New Paltz (2022)."], ["", "The longest continuously active Chapter", "Psi, Duquesne University (chartered 1929)."], ["", "The newest Alumni Club", "Jersey Shore Alumni Club (2024), listed after Staten Island and Hilton Head, also 2024."], ["", "The newest Alumni Association", "Delta Rho Alumni Association (2016), listed after Delta Epsilon, also 2016."], ["", "City of the first Alumni Club", "Cleveland."]]},{"sec": "8", "t": "Academics", "c": [["", "Purpose of the Fraternity in college life", "To provide a social and fraternal atmosphere that helps students acclimate to college life and do better in their collegiate studies."], ["", "Purpose of a college education (1952 <i>Dokime</i>)", "To train the mind to adapt itself quickly to novel situations: to discipline the mental processes so you can think on your feet."], ["", "The “objective of study”", "To gain wisdom rather than knowledge."], ["", "Minimum GPA to be considered for membership", "2.0, a bare minimum to quickly build upon."], ["", "The 11 essentials of effective study", "<span class=\"li\">1. Good physical and mental condition</span><span class=\"li\">2. A definite daily study program</span><span class=\"li\">3. Avoid worry and excitement</span><span class=\"li\">4. Arrange your chair, clear your desk, and adjust your light</span><span class=\"li\">5. Know definitely what you are to study</span><span class=\"li\">6. You must feel that the task is worthwhile</span><span class=\"li\">7. Acquaintance with the related books and the special vocabulary</span><span class=\"li\">8. An outline of the lesson; keep notes accurately and neatly</span><span class=\"li\">9. Connect the day’s lesson to the previous day and to the rest of the course</span><span class=\"li\">10. Over-learn your lesson to provide for forgetting</span><span class=\"li\">11. Have faith in yourself</span>", "w", "list"]]},{"sec": "8", "t": "Recognition and Achievement", "c": [["", "The Alpha Phi Delta Foundation", "Formed in 1980. It raises funds and makes grants for charitable, educational and cultural activities, and its Scholarship Division awards scholarships."], ["", "Dr. Americo Ulysses Nicholas Camera", "Chairman of the Department of Romance Languages at Brooklyn College (1930–1938) and a Beta Eta alumnus. The Camera Scholastic Achievement Award goes each semester to the brother with the highest chapter GPA."], ["", "Where National Scholarship winners are announced", "At the National Convention."], ["", "Leadership Conferences develop skills in", "<span class=\"li\">Chapter leadership</span><span class=\"li\">Communication</span><span class=\"li\">Recruitment</span>", 0, "list"]]},{"sec": "9", "t": "Fraternity Publications", "c": [["", "Annual Report", "Compiles the annual reports of National Officers and District Governors. Published in late summer, covering July 1 to June 30."], ["", "Semi-Annual Report", "Companion to the Annual Report, published each winter. Covers July 1 to December 31."], ["", "<i>The Chapter Letter</i>", "A newsletter from Central Office, published on a near-monthly basis."], ["", "Constitution and Bylaws", "The Fraternity’s laws, as approved and adopted by the National Council. The earliest Constitution dates back to 1925."], ["", "<i>Ecce Signum</i>", "“This is the sign.” The handbook of the Fraternity: a book of records, policies and laws that contains the Constitution and Bylaws."], ["", "<i>The Kleos</i>", "Established in 1929, the national magazine and “official publication of Alpha Phi Delta.” Successor to <i>The Ticker</i>."], ["", "<i>The Ritual of Initiation</i>", "The initiation ceremony, contained in <i>The Book of Rituals</i>, which also holds <i>The Ritual of Baptism</i> and <i>The Ritual for Deceased Brothers</i>."], ["", "<i>Sembra Interessante</i>", "Alpha Phi Delta’s Italian heritage newsletter, published three to four times per year."], ["", "National Directory", "A listing of our brotherhood with contact information. Published from time to time."], ["", "<i>History of Alpha Phi Delta Fraternity</i>", "The story of Alpha Phi Delta from its founding to the present. The latest volume is <i>1914–2023</i>, published in late 2023."]]}]);
 var L=[["Α","α","Alpha"],["Β","β","Beta"],["Γ","γ","Gamma"],["Δ","δ","Delta"],["Ε","ε","Epsilon"],["Ζ","ζ","Zeta"],["Η","η","Eta"],["Θ","θ","Theta"],["Ι","ι","Iota"],["Κ","κ","Kappa"],["Λ","λ","Lambda"],["Μ","μ","Mu"],["Ν","ν","Nu"],["Ξ","ξ","Xi"],["Ο","ο","Omicron"],["Π","π","Pi"],["Ρ","ρ","Rho"],["Σ","σ","Sigma"],["Τ","τ","Tau"],["Υ","υ","Upsilon"],["Φ","φ","Phi"],["Χ","χ","Chi"],["Ψ","ψ","Psi"],["Ω","ω","Omega"]];
-var root=document.getElementById("root"),groot=document.getElementById("greekroot"),cards=[];
+var root=document.getElementById("root"),groot=document.getElementById("greekroot"),cards=[],secEls={};
+SEC.forEach(function(x){var d=document.createElement("section");d.className="sgrp";d.setAttribute("data-g",x[0]);var h=document.createElement("h3");h.className="sec";h.innerHTML='<span class="sn">Section '+x[0]+'</span>'+x[1];d.appendChild(h);root.appendChild(d);secEls[x[0]]=d});
 S.forEach(function(s,si){
   if(s.t==="Greek alphabet")return;
-  if(si===0){var o=document.getElementById("oathroot");s.c.forEach(function(c,i){var d=document.createElement("article");d.className="doc";d.style.setProperty("--i",i);d.innerHTML='<h3 class="sec">'+c[1]+'</h3><p class="'+(c[1]==="Keynote of the Fraternity"?"key":"txt")+'">'+c[2]+'</p>';o.appendChild(d)});return}
+  if(si===0){var o=document.getElementById("oathroot");s.c.forEach(function(c,i){var d=document.createElement("article");d.className="doc";d.style.setProperty("--i",i);var id="doc"+i;d.innerHTML='<h3 class="sec"><button type="button" class="dh" aria-expanded="true" aria-controls="'+id+'"><span>'+c[1]+'</span><span class="car2" aria-hidden="true"></span></button></h3><div class="dbody" id="'+id+'"><div class="dclip"><p class="'+(c[1]==="Keynote of the Fraternity"?"key":"txt")+'">'+c[2]+'</p></div></div>';var hb=d.querySelector(".dh"),bd=d.querySelector(".dbody");hb.addEventListener("click",function(){var open=hb.getAttribute("aria-expanded")!=="true";hb.setAttribute("aria-expanded",open);bd.classList.toggle("shut",!open)});o.appendChild(d)});return}
   var greek=s.t==="Greek alphabet",tgt=greek?groot:root,g=document.createElement("div");g.className="grid";
-  if(!greek){var grp=document.createElement("div");grp.className="grp";grp.setAttribute("data-g",["basics","editions","symbols"][si]);var h=document.createElement("h3");h.className="sec";h.textContent=s.t;grp.appendChild(h);grp.appendChild(g);tgt.appendChild(grp)}else{tgt.appendChild(g)}
+  if(!greek){var grp=document.createElement("div");grp.className="grp";var h=document.createElement("h4");h.className="cat";h.textContent=s.t;grp.appendChild(h);grp.appendChild(g);secEls[s.sec].appendChild(grp)}else{tgt.appendChild(g)}
   s.c.forEach(function(c,i){
-    var b=document.createElement("button");b.type="button";b.className="card"+(c[2]==="GREEK"?" wide":"");b.setAttribute("aria-pressed","false");b.style.setProperty("--i",i);
+    var b=document.createElement("button");b.type="button";b.className="card"+(c[2]==="GREEK"||c[3]==="w"?" wide":"");b.setAttribute("aria-pressed","false");b.style.setProperty("--i",i);
     var ans;
     if(c[2]==="GREEK"){ans='<span class="lab">Alpha to omega</span><span class="letters">'+L.map(function(l,k){return '<span class="lt" style="--k:'+k+'"><b>'+l[0]+' '+l[1]+'</b><span>'+l[2]+'</span></span>'}).join("")+'</span>'}
-    else{ans='<span class="lab">'+c[1]+'</span><span class="t'+(c[2].length>120?' long':'')+'">'+c[2]+'</span>'}
+    else{ans='<span class="lab">'+c[1]+'</span><span class="t'+(c[4]==="list"?' list':c[2].length>120?' long':'')+'">'+c[2]+'</span>'}
     b.innerHTML='<span class="inner"><span class="face front"><span class="q">'+c[1]+'</span><span class="tap">Tap to flip</span></span><span class="face back">'+ans+'</span></span>';
     b.addEventListener("click",function(){var on=b.classList.toggle("on");b.setAttribute("aria-pressed",on)});
     g.appendChild(b);cards.push(b)
@@ -287,37 +586,472 @@ S.forEach(function(s,si){
 function setAll(v){cards.forEach(function(b){b.classList.toggle("on",v);b.setAttribute("aria-pressed",v)})}
 document.getElementById("all").addEventListener("click",function(){setAll(true)});
 document.getElementById("reset").addEventListener("click",function(){setAll(false)});
-var chips=document.querySelectorAll(".chip");
-chips.forEach(function(c){c.addEventListener("click",function(){var f=c.getAttribute("data-f");chips.forEach(function(x){x.classList.toggle("on",x===c);x.setAttribute("aria-pressed",x===c)});document.querySelectorAll(".grp").forEach(function(g){g.hidden=!(f==="all"||g.getAttribute("data-g")===f)})})});
+var chipBox=document.getElementById("chips");
+chipBox.innerHTML='<button class="chip on" type="button" data-f="all" aria-pressed="true">All</button>'+SEC.map(function(x){return '<button class="chip" type="button" data-f="'+x[0]+'" aria-pressed="false" title="'+x[1]+'">Section '+x[0]+'</button>'}).join("");
+var chips=chipBox.querySelectorAll(".chip");
+chips.forEach(function(c){c.addEventListener("click",function(){var f=c.getAttribute("data-f");chips.forEach(function(x){x.classList.toggle("on",x===c);x.setAttribute("aria-pressed",x===c)});document.querySelectorAll(".sgrp").forEach(function(g){g.hidden=!(f==="all"||g.getAttribute("data-g")===f)})})});
 (function(){
-  var card=document.createElement("div");card.className="card gcard";
+  var card=document.createElement("div");card.className="gpanel";card.id="gpanel";
   var tl=L.map(function(l,k){var g=l[0]+" "+l[1];return '<button type="button" class="tile" style="--k:'+k+'" aria-pressed="false"><span class="cover"><b>'+g+'</b></span><span class="under"><b>'+g+'</b><span>'+l[2]+'</span></span></button>'}).join("");
-  card.innerHTML='<div class="inner"><button type="button" class="face front gfront"><span class="q">Greek Alphabet</span><span class="tap">Tap to flip</span></button><div class="face back gback"><div class="ghead"><span class="lab">Tap a letter to reveal its name.</span><span class="gbtns"><button class="btn pri" type="button" data-a="show">Reveal all</button><button class="btn" type="button" data-a="hide">Hide all</button><button class="btn" type="button" data-a="flip">Flip back</button></span></div><div class="tiles">'+tl+'</div></div></div>';
+  card.innerHTML='<div class="ghead"><span class="lab">Tap a letter to reveal its name.</span><span class="gbtns"><button class="btn pri" type="button" data-a="show">Reveal all</button><button class="btn" type="button" data-a="hide">Hide all</button></span></div><div class="tiles">'+tl+'</div>';
   groot.appendChild(card);
-  var fr=card.querySelector(".front"),bk=card.querySelector(".back"),ts=[].slice.call(card.querySelectorAll(".tile"));
-  function flip(v){card.classList.toggle("on",v);fr.inert=v;bk.inert=!v}
+  var ts=[].slice.call(card.querySelectorAll(".tile"));
   function tile(t,on,d){t.querySelector(".cover").style.transitionDelay=d+"ms";t.classList.toggle("on",on);t.setAttribute("aria-pressed",on)}
-  flip(false);
-  fr.addEventListener("click",function(){flip(true)});
   ts.forEach(function(t){t.addEventListener("click",function(){tile(t,!t.classList.contains("on"),0)})});
   card.querySelector('[data-a="show"]').addEventListener("click",function(){ts.forEach(function(t,k){tile(t,true,k*40)})});
   card.querySelector('[data-a="hide"]').addEventListener("click",function(){ts.forEach(function(t,k){tile(t,false,k*25)})});
-  card.querySelector('[data-a="flip"]').addEventListener("click",function(){flip(false)});
 })();
-var deck=[],idx=0,fl=false;
-S.forEach(function(s,si){if(si===0)return;s.c.forEach(function(c){if(c[2]!=="GREEK")deck.push(c)})});
+var pool=[],deck=[],idx=0,fl=false;
+var CATS=[];S.forEach(function(s,si){if(si===0||!s.sec)return;var k=s.sec+"|"+s.t;CATS.push({k:k,sec:s.sec,t:s.t,n:s.c.length});s.c.forEach(function(c){if(c[2]!=="GREEK")pool.push({g:k,c:c})})});
 var pc=document.getElementById("pc"),pw=document.getElementById("pwrap"),pq=document.getElementById("pq"),pl=document.getElementById("pl"),pa=document.getElementById("pa"),cnt=document.getElementById("cnt"),pf=document.getElementById("pf");
-function fill(){var c=deck[idx];pq.textContent=c[1];pl.textContent=c[1];pa.textContent=c[2]}
+function fill(){if(!deck.length)return;var c=deck[idx];pq.innerHTML=c[1];pl.innerHTML=c[1];pa.innerHTML=c[2];pa.className="t"+(c[4]==="list"?" list":"")}
 function setFlip(v){fl=v;pc.classList.toggle("on",v);pc.setAttribute("aria-pressed",v)}
-function show(){var was=fl;setFlip(false);cnt.textContent="Card "+(idx+1)+" of "+deck.length;pf.style.width=((idx+1)/deck.length*100)+"%";pw.classList.remove("swap");void pw.offsetWidth;pw.classList.add("swap");if(was)setTimeout(fill,300);else fill()}
-function shuffle(){for(var i=deck.length-1;i>0;i--){var j=Math.floor(Math.random()*(i+1));var t=deck[i];deck[i]=deck[j];deck[j]=t}idx=0;show()}
-function go(d){idx=(idx+d+deck.length)%deck.length;show()}
+function show(){if(!deck.length){setFlip(false);cnt.textContent="Select at least one section to practice.";pf.style.width="0%";pw.hidden=true;return}pw.hidden=false;var was=fl;setFlip(false);cnt.textContent="Card "+(idx+1)+" of "+deck.length;pf.style.width=((idx+1)/deck.length*100)+"%";pw.classList.remove("swap");void pw.offsetWidth;pw.classList.add("swap");if(was)setTimeout(fill,300);else fill()}
+function shuffle(){var secs=[].slice.call(document.querySelectorAll(".f-cat:checked")).map(function(x){return x.value});deck=pool.filter(function(p){return secs.indexOf(p.g)>=0}).map(function(p){return p.c});for(var i=deck.length-1;i>0;i--){var j=Math.floor(Math.random()*(i+1));var t=deck[i];deck[i]=deck[j];deck[j]=t}idx=0;show()}
+function go(d){if(!deck.length)return;idx=(idx+d+deck.length)%deck.length;show()}
 pc.addEventListener("click",function(){setFlip(!fl)});
 document.getElementById("next").addEventListener("click",function(){go(1)});
 document.getElementById("prev").addEventListener("click",function(){go(-1)});
 document.getElementById("shuf").addEventListener("click",shuffle);
-document.addEventListener("keydown",function(e){if(document.getElementById("v-practice").hidden)return;if(e.key==="ArrowRight")go(1);else if(e.key==="ArrowLeft")go(-1)});
+document.addEventListener("keydown",function(e){if(document.getElementById("v-practice").hidden)return;if(e.target.closest&&e.target.closest("input,select,textarea"))return;if(e.key==="ArrowRight")go(1);else if(e.key==="ArrowLeft")go(-1)});
+var pf2=document.getElementById("pfilt");
+pf2.insertAdjacentHTML("beforeend",'<label class="fl all"><input type="checkbox" id="f-all" checked><span>All sections</span></label>'+SEC.map(function(x){var cs=CATS.filter(function(c){return c.sec===x[0]});if(!cs.length)return"";return '<div class="fgrp"><label class="fl par"><input type="checkbox" class="f-sec" value="'+x[0]+'" checked><span>Section '+x[0]+': '+x[1]+'</span></label><div class="fkids">'+cs.map(function(c){return '<label class="fl kid"><input type="checkbox" class="f-cat" value="'+c.k+'" data-s="'+x[0]+'" checked><span>'+c.t+'</span></label>'}).join("")+'</div></div>'}).join(""));
+var fAll=document.getElementById("f-all"),fSecs=[].slice.call(pf2.querySelectorAll(".f-sec")),fCats=[].slice.call(pf2.querySelectorAll(".f-cat"));
+function kids(sv){return fCats.filter(function(c){return c.getAttribute("data-s")===sv})}
+function syncAll(){fSecs.forEach(function(p){var k=kids(p.value),n=k.filter(function(x){return x.checked}).length;p.checked=(n===k.length);p.indeterminate=(n>0&&n<k.length)});var n=fCats.filter(function(x){return x.checked}).length;fAll.checked=(n===fCats.length);fAll.indeterminate=(n>0&&n<fCats.length)}
+fAll.addEventListener("change",function(){var v=fAll.checked;fCats.forEach(function(x){x.checked=v});syncAll();shuffle()});
+fSecs.forEach(function(p){p.addEventListener("change",function(){kids(p.value).forEach(function(x){x.checked=p.checked});syncAll();shuffle()})});
+fCats.forEach(function(x){x.addEventListener("change",function(){syncAll();shuffle()})});
 shuffle();
+var QZ=[{"id": "I", "name": "Section I", "qs": [{"q": "With what ceremony does the pledge program of Alpha Phi Delta begin?", "ans": ["The Baptism Ceremony"], "wrong": ["The Ritual of Initiation", "The Oath of Brotherhood", "A welcome banquet"]}, {"q": "What are the items that make up the scope of the pledge program?", "ans": ["Learn the information contained in <i>The Dokime</i>", "Learn the fraternity songs (especially <i>Our Fraternity</i> and <i>Fraternity Sweetheart</i>)", "Sponsor a community service (or school-related) project", "Learn the names of the National and District Officers", "Learn the names of the officers of the Chapter that you are pledging", "Learn the names of District entities", "Learn the names of all active Chapters", "Complete a project for the Chapter", "Meet with each chapter brother; acquire his complete signature", "Complete the Italian Cultural Assignment"], "wrong": ["Learn the names of every alumnus of the chapter", "Hold a chapter office during the pledge period", "Recruit three prospective members for the chapter"]}, {"q": "What are the aims of the pledge period?", "ans": ["To meet and learn about his future brothers", "To learn about Alpha Phi Delta", "To work together with his pledge brothers and demonstrate the qualities of brotherhood"], "wrong": ["To raise money for the chapter", "To earn the highest grade point average in the chapter", "To plan the chapter’s social calendar"]}, {"q": "How did <i>The Dokime</i> get its name? What does the name mean?", "ans": ["It combines the Latin “doce me”, meaning “teach me”, with the Greek “dokime”, meaning “the test”"], "wrong": ["It comes from the Greek “doce me”, meaning “the test”, and the Latin “dokime”, meaning “teach me”", "It comes from the Latin “dokime”, meaning “brotherhood”, the keynote of the fraternity", "It was named after the founder of the first chapter, and the name has no other meaning"]}, {"q": "What is the difference between <u>a</u> pledge book and <u>the</u> pledge book?", "ans": ["<u>A</u> pledge book is kept by each member of a pledge class and is the chapter’s property until initiation; <u>the</u> Pledge Book (Plate Register) is a bound volume kept by each undergraduate chapter as a permanent record of every pledge and pledge class"], "wrong": ["<u>A</u> pledge book is a bound volume kept by each chapter as a permanent record; <u>the</u> Pledge Book is kept by each member of a pledge class until initiation", "They are the same book; <u>the</u> Pledge Book is only a newer edition of <u>a</u> pledge book", "<u>A</u> pledge book is kept by the Central Office; <u>the</u> Pledge Book is kept by each pledge as a personal keepsake"]}, {"q": "What is the pledge pin a symbol of? Where is it to be worn?", "ans": ["A symbol of the pledge’s friendship with Alpha Phi Delta and his desire to join; it is worn on the left lapel of a jacket or the left collar of a shirt at all times, until the right to wear the Fraternity Pin is earned"], "wrong": ["A symbol of victory and state authority; it is worn on the right lapel of a jacket or the right collar of a shirt at all times", "A symbol of scholastic achievement; it is worn on the left lapel only at chapter meetings", "A symbol of the chapter’s authority over its pledges; it is worn on a chain around the neck during the pledge ceremony only"]}, {"q": "What are the eight pledge responsibilities?", "ans": ["Improving his scholastic activity", "Support his college and its activities", "Help his community through his chapter", "Know the information contained in the <i>Dokime</i>", "Know the traditions of Alpha Phi Delta", "Know the history of the chapter", "Learn about the brothers of the chapter", "Learn about the members of your pledge class"], "wrong": ["Recruit new pledges for the chapter", "Hold an executive office in the chapter", "Plan the chapter’s social events"]}, {"q": "What were the Pledge Responsibilities called prior to the 1979 <i>Dokime</i>?", "ans": ["The Pledge Ten Commandments"], "wrong": ["The Pledge Oath", "The Pledge Aims", "The Pledge Code of Conduct"]}, {"q": "What are the things that Alpha Phi Delta offers you?", "ans": ["The advantages of a national fraternity", "The ability to understand the values that took the world out of the dark ages by way of the Italian Renaissance", "Brotherly companionship, as well as fraternal correction by which one is called to account for his behavior, actions, and allegiance to the fraternity", "Exposure to culture, as the Ritual of Initiation “opens the minds of the initiates to the wonders of the great and glorious past”", "The development of certain human traits brought forth by camaraderie, notably frankness and honesty with one’s brothers"], "wrong": ["A guaranteed officer position in the chapter", "A scholarship that covers tuition", "Exemption from chapter dues"]}, {"q": "What are the things that you are called to offer Alpha Phi Delta?", "ans": ["You must be willing to accept responsibility", "You cannot be a snob", "You must be honest and forthright", "You must be socially and morally disciplined", "You must be able to work cooperatively with the fraternity", "You must strive to give Alpha Phi Delta a good image on your campus", "You must remember the democratic ideals of our nation and our fraternity, which call for equality and freedom of thought (within the bounds of reason)", "You must be open-minded", "You must be a good student (or at least a hard working student)", "You must strive to be a cultured gentleman"], "wrong": ["You must hold a chapter office before initiation", "You must pay all national dues before the pledge period begins", "You must be an officer of your campus student government"]}]}, {"id": "II", "name": "Section II", "qs": [{"q": "What was the first Greek letter organization, and when and where was it founded?", "ans": ["Phi Beta Kappa, founded in 1776 at the College of William and Mary"], "wrong": ["Kappa Alpha Society, founded in 1825 at Union College", "Sigma Phi, founded in 1827 at Union College", "Phi Beta Kappa, founded in 1780 at Yale"]}, {"q": "What was the first American social fraternity, and when was it founded?", "ans": ["Kappa Alpha Society, founded in 1825"], "wrong": ["Phi Beta Kappa, founded in 1776", "Sigma Phi, founded in 1827", "Delta Phi, founded in 1827"]}, {"q": "Which fraternities were in the Union Triad?", "ans": ["Kappa Alpha Society", "Sigma Phi", "Delta Phi"], "wrong": ["Psi Upsilon", "Chi Psi", "Beta Theta Pi"]}, {"q": "Which fraternities were in the Second Union Triad?", "ans": ["Psi Upsilon", "Chi Psi", "Theta Delta Chi"], "wrong": ["Kappa Alpha Society", "Delta Phi", "Sigma Chi"]}, {"q": "When was the Golden Age of Fraternities, and why was it called that?", "ans": ["1850–1900; the system grew in leaps and bounds and over 30 national fraternities were born"], "wrong": ["1776–1825; the first Greek letter organizations were founded", "1900–1950; membership doubled after both World Wars", "1865–1900; fraternities were first allowed on every campus"]}, {"q": "Where did the term “rushing” come from as used by fraternities?", "ans": ["Fraternity members would collectively “rush” to the train station to meet incoming first-year students"], "wrong": ["Brothers rushed to complete initiation before the semester ended", "Pledges rushed through a series of tests during recruitment", "Members rushed to claim the best fraternity houses near campus"]}, {"q": "What is the connection between “rushing” and pledge pins?", "ans": ["To claim a new student, a brother would pin the fraternity’s colors on him as a lapel pin, which later developed into the pledge pin"], "wrong": ["Pledge pins were given to anyone who attended a rush event", "Pledge pins were created to replace the train station badges", "Pledge pins were worn only by the brothers who did the rushing"]}, {"q": "What happened in 1945 that began to boost fraternity membership?", "ans": ["Under the G.I. Bill, returning servicemen received government aid to attend college"], "wrong": ["The first national interfraternity council was formed", "Federal law began to require fraternities on campuses", "The Supreme Court protected fraternity membership"]}, {"q": "What Act of Congress was passed in 1998 that was relevant to fraternities?", "ans": ["The Freedom of Association Act"], "wrong": ["The G.I. Bill", "The Higher Education Act", "The Fraternity Protection Act"]}, {"q": "In 1851, the first sorority was founded. What was its name?", "ans": ["Adelphian (later Alpha Delta Phi)"], "wrong": ["Theta Delta", "Kappa Alpha Theta", "Alpha Phi"]}, {"q": "How many U.S. Presidents since 1900 have been fraternity men?", "ans": ["14 of 22"], "wrong": ["8 of 22", "10 of 22", "18 of 22"]}, {"q": "How much higher is Alpha Phi Delta’s graduation rate than the U.S. all-male graduation rate?", "ans": ["25 percentage points (81% versus 56%)"], "wrong": ["10 percentage points (81% versus 71%)", "15 percentage points (81% versus 66%)", "35 percentage points (81% versus 46%)"]}]}, {"id": "III", "name": "Section III", "qs": [{"q": "What organization at Syracuse did Alpha Phi Delta grow out of?", "ans": ["Il Circolo Italiano"], "wrong": ["The Cosmopolitan Club", "Sigma Gamma Phi", "The Italian Alliance"]}, {"q": "What is the founding date of Alpha Phi Delta?", "ans": ["November 5, 1914"], "wrong": ["November 5, 1913", "October 20, 1914", "June 1916"]}, {"q": "What are the names of the seven founders of Alpha Phi Delta?", "ans": ["Cesidio A. Guarini", "Ferdinand F. DiBartolo", "Anthony T. Frascati", "Nicholas Frunzi", "Otto Gelormini", "Dominic T. Ciolli", "Joseph Cangiamila"], "wrong": ["Salvatore LaCorte", "Ernest DeMuria", "William Liccione", "Anthony Pascarella", "Peter Sammartino"]}, {"q": "What was the name of the Italian fraternity at Columbia University that merged with Alpha Phi Delta in 1916?", "ans": ["Sigma Gamma Phi"], "wrong": ["Lambda Sigma Delta", "Il Circolo Italiano", "Alpha Gamma Phi"]}, {"q": "Where was the merger meeting held in which Alpha Phi Delta became a national fraternity?", "ans": ["Syracuse University"], "wrong": ["Columbia University", "Yale University", "The Hotel Taft in New Haven"]}, {"q": "Nicholas Frunzi was the first president of Alpha Phi Delta. Who was the first National President (Grand Consul)?", "ans": ["Salvatore LaCorte"], "wrong": ["Cesidio Guarini", "Ferdinand DiBartolo", "Dr. Peter Sammartino"]}, {"q": "In what year did Alpha Phi Delta officially open its membership to non-Italians?", "ans": ["1965"], "wrong": ["1953", "1957", "1971"]}, {"q": "What were the first three national awards established?", "ans": ["Most Improved Chapter", "Outstanding Undergraduate", "Outstanding Alumnus"], "wrong": ["Outstanding Chapter", "Outstanding Community Service", "Outstanding Alumni Club"]}, {"q": "The earliest written history of the Fraternity was written in 1929. By whom was it written?", "ans": ["Founder Dominic Ciolli"], "wrong": ["Stanley Raffa", "Ronald Smé", "Cesidio Guarini"]}, {"q": "Who wrote the dedication text for the 1973 edition of <i>The History of Alpha Phi Delta</i>?", "ans": ["Rev. Salvatore J. Federici"], "wrong": ["Stanley W. Raffa", "John Russo", "Salvatore LaCorte"]}, {"q": "Who were the authors of <i>The History of Alpha Phi Delta</i> for the 1973, 2000, and 2015 versions, respectively?", "ans": ["Stanley Raffa, John Russo, and Ronald Smé"], "wrong": ["John Russo, Stanley Raffa, and Ronald Smé", "Stanley Raffa, Ronald Smé, and John Russo", "Rev. Salvatore Federici, John Russo, and Stanley Raffa"]}, {"q": "Deceased Brothers Remembrance Day is held annually on August 12, which marks the date of the first death of a brother of Alpha Phi Delta. Who was that brother?", "ans": ["Joseph Cangiamila"], "wrong": ["Nicholas Frunzi", "Salvatore LaCorte", "Otto Gelormini"]}]}, {"id": "IV", "name": "Section IV", "qs": [{"q": "Which of these are statements of the Creed? (The Creed has seven statements; these are three of them.)", "ans": ["The development of the common bond", "The knowledge that culture can be and is essential to civilization", "The demonstration that pride in ancestry can strengthen one’s faith in America"], "wrong": ["The expansion of the Fraternity to every campus in the nation", "The pursuit of wealth through brotherhood", "The advancement of Greek tradition above all others"]}, {"q": "What are the four Cardinal Virtues?", "ans": ["Prudence", "Fortitude", "Justice", "Temperance"], "wrong": ["Wisdom", "Faith", "Charity"]}, {"q": "What percentage of the American population went to college in 1914?", "ans": ["Less than half of one percent"], "wrong": ["About 5 percent", "About 10 percent", "About 25 percent"]}, {"q": "What are the six heraldic symbols of Alpha Phi Delta?", "ans": ["Eagle", "Fasces", "Key", "Star", "Scroll", "Torch"], "wrong": ["Sword", "Shield", "Laurel wreath"]}, {"q": "To what era did our Beta Chapter trace back our Italian heritage?", "ans": ["Imperial Rome"], "wrong": ["The Italian Renaissance", "The Italian immigration of the early 1900s", "The Middle Ages"]}, {"q": "What Cardinal Virtue is about rendering every man his due?", "ans": ["Justice"], "wrong": ["Prudence", "Fortitude", "Temperance"]}, {"q": "What Cardinal Virtue is about judging between virtuous and vicious actions?", "ans": ["Prudence"], "wrong": ["Justice", "Fortitude", "Temperance"]}, {"q": "What is Chapter Assessment?", "ans": ["The annual fee paid by a Chapter to the National Fraternity"], "wrong": ["The fee each pledge pays at initiation", "A fine paid for missing a National Council meeting", "The yearly dues each brother pays his chapter"]}, {"q": "What is your first act of fraternalism?", "ans": ["Timely payment of your initiation fee"], "wrong": ["Learning the Pledge’s Oath", "Attending your first chapter meeting", "Wearing the Pledge Pin"]}, {"q": "What governing body sets the initiation fee annually?", "ans": ["The National Council"], "wrong": ["The Executive Committee", "Central Office", "Each individual Chapter"]}]}, {"id": "V", "name": "Section V", "qs": [{"q": "What is the motto of Alpha Phi Delta, and what does it mean?", "ans": ["<i>Faciamus</i>, meaning “we do”"], "wrong": ["<i>Fortiter in re</i>, meaning “strength in action”", "<i>Ecce Signum</i>, meaning “this is the sign”", "<i>Doce me</i>, meaning “teach me”"]}, {"q": "What are the Fraternity’s colors?", "ans": ["Purple and white"], "wrong": ["Purple and gold", "Blue and white", "Purple and red"]}, {"q": "What are the official song and the official poem of Alpha Phi Delta?", "ans": ["The song is “Alpha Phi Delta Rose” and the poem is “From a Seed”"], "wrong": ["The song is “Our Fraternity” and the poem is “From a Seed”", "The song is “Alpha Phi Delta Rose” and the poem is “Fraternity Sweetheart”", "The song is “Fraternity Sweetheart” and the poem is “Our Fraternity”"]}, {"q": "What is the Italian name for our Fraternity’s flower?", "ans": ["<i>Garofano</i>"], "wrong": ["<i>Rosa</i>", "<i>Giglio</i>", "<i>Aquila</i>"]}, {"q": "The definition of our Coat of Arms is found in what Fraternity document?", "ans": ["The Constitution"], "wrong": ["<i>The Dokime</i>", "<i>The Book of Rituals</i>", "<i>The Kleos</i>"]}, {"q": "Who wrote “Our Fraternity” and “Fraternity Sweetheart”?", "ans": ["Joseph La Porta, Eta"], "wrong": ["Gabriel Jacoby, Phi", "Salvatore Spalla", "Raymond Paolini, Epsilon"]}]}, {"id": "VI", "name": "Section VI", "qs": [{"q": "The National Council, which combines the executive, legislative, and judicial operations of the Fraternity, is what kind of system of governance?", "ans": ["A parliamentary system"], "wrong": ["A presidential system", "A monarchy", "A direct democracy"]}, {"q": "What officer is the Chairman of the National Council?", "ans": ["The National President"], "wrong": ["The National Vice President", "The National Secretary", "The National Chaplain"]}, {"q": "How many delegates does each chapter get on the National Council?", "ans": ["Two"], "wrong": ["One", "Three", "Four"]}, {"q": "What is the most powerful of all of the Fraternity’s committees?", "ans": ["The Executive Committee"], "wrong": ["The Ritual Committee", "The Budget and Audit Committee", "The Legislative Committee"]}, {"q": "What officers are the voting members of the Executive Committee?", "ans": ["The National Vice President", "The Vice President for Undergraduate Affairs", "The Vice President for Alumni Affairs", "The District Governors"], "wrong": ["The National President (votes on every motion)", "The National Secretary", "The National Treasurer"]}, {"q": "What National Officers are elected?", "ans": ["The National President", "The National Vice President", "The Vice President for Alumni Affairs", "The Vice President for Undergraduate Affairs"], "wrong": ["The National Secretary", "The National Treasurer", "The National Historian"]}, {"q": "What one National Award can be won by an individual, a chapter, an alumni club, or an alumni association?", "ans": ["Outstanding Community Service"], "wrong": ["Most Improved Chapter", "Outstanding Undergraduate", "Outstanding Chapter"]}, {"q": "What is the “Office” held jointly by the National Secretary and Treasurer?", "ans": ["Central Office"], "wrong": ["The Executive Office", "The Chapter Office", "The Convention Office"]}, {"q": "How many District Governors / Districts are in Alpha Phi Delta?", "ans": ["11"], "wrong": ["7", "9", "13"]}, {"q": "What officer is charged with the duty of reactivating chapters?", "ans": ["The Vice President for Expansion"], "wrong": ["The Vice President for Undergraduate Affairs", "The National Secretary", "The District Governor"]}]}, {"id": "VII", "name": "Section VII", "qs": [{"q": "Chapters of the Fraternity are grouped into geographic areas called what?", "ans": ["Districts"], "wrong": ["Regions", "Councils", "Provinces"]}, {"q": "What title does the official representative of a District to the National Fraternity carry?", "ans": ["District Governor"], "wrong": ["District President", "District Consul", "District Chairman"]}, {"q": "What are the three types of “entities” in Alpha Phi Delta?", "ans": ["Chapters", "Alumni Clubs", "Alumni Associations"], "wrong": ["Districts", "Colonies", "Committees"]}, {"q": "How many members must a chapter have to be considered active?", "ans": ["At least one member paying requisite fees to the National Fraternity"], "wrong": ["At least five members", "At least ten members", "At least twenty members"]}, {"q": "Where is our Central Office presently located (city and state)?", "ans": ["Camden, Delaware"], "wrong": ["Staten Island, New York", "Struthers, Ohio", "Dover, Delaware"]}, {"q": "Between what two dates is the Annual Meeting of the National Council held?", "ans": ["January 15 and March 31"], "wrong": ["June 30 and September 15", "July 1 and December 31", "February 1 and April 30"]}, {"q": "Between what two dates is the National Convention held?", "ans": ["June 30 and September 15"], "wrong": ["January 15 and March 31", "July 1 and August 31", "May 1 and July 31"]}, {"q": "What Committee meets at the National Convention?", "ans": ["The Executive Committee"], "wrong": ["The Ritual Committee", "The Convention Committee only", "The Credentials Committee only"]}, {"q": "What are the four special awards that are given out from time to time at the National Convention?", "ans": ["Expansion Award", "Vincent Larcy Communication Award", "The Pioneer Award", "Lifetime Achievement Award"], "wrong": ["Outstanding Community Service", "Most Improved Chapter", "Outstanding Alumni Club"]}, {"q": "Can you identify the first 24 chapters of the Fraternity (Alpha through Omega) with each one’s affiliated school? Which pairing is correct?", "ans": ["Kappa: Case Western Reserve"], "wrong": ["Kappa: University of Pennsylvania", "Omega: Manhattan College", "Chi: Duquesne University"]}, {"q": "What is the newest Chapter of Alpha Phi Delta?", "ans": ["Epsilon Sigma (SUNY New Paltz)"], "wrong": ["Epsilon Rho (Kipps Bay Region)", "Epsilon Pi (SUNY Cortland)", "Epsilon Omicron (Fitchburg State)"]}, {"q": "What is the longest continuously active Chapter in Alpha Phi Delta?", "ans": ["Psi (Duquesne University)"], "wrong": ["Alpha (Syracuse University)", "Gamma Iota (Pace University)", "Delta Theta (Mid-Hudson Region)"]}, {"q": "What is the newest Alumni Club of Alpha Phi Delta?", "ans": ["Jersey Shore Alumni Club (2024)"], "wrong": ["Naples (Fla.) Alumni Club", "Merrimack Valley Alumni Club", "Chicago Alumni Club"]}, {"q": "In what city was the first Alumni Club of Alpha Phi Delta?", "ans": ["Cleveland"], "wrong": ["Albany", "Boston", "Pittsburgh"]}]}, {"id": "VIII", "name": "Section VIII", "qs": [{"q": "In terms of college life and academics, what is the purpose of the Fraternity?", "ans": ["To provide a social and fraternal atmosphere that helps students acclimate to college life and do better in their studies"], "wrong": ["To replace the academic honor societies on campus", "To tutor members in every subject", "To limit members’ outside activities during the semester"]}, {"q": "According to the words of the 1952 <i>Dokime</i>, what is the purpose of a college education?", "ans": ["To train the mind to adapt itself quickly to novel situations and discipline the mental processes"], "wrong": ["To prepare students for a single profession", "To memorize as many facts as possible", "To earn the highest possible GPA"]}, {"q": "What is the “objective of study”?", "ans": ["To gain wisdom rather than knowledge"], "wrong": ["To gain knowledge rather than wisdom", "To earn a degree as quickly as possible", "To rank first in the class"]}, {"q": "Name one of the 11 essentials of effective studying.", "ans": ["A definite daily study program: fix certain hours for study and stick to them"], "wrong": ["Study only in the final week before an exam", "Avoid outlines so you can stay flexible", "Study in a group at every session"]}, {"q": "In what year was the Alpha Phi Delta Foundation started?", "ans": ["1980"], "wrong": ["1973", "1989", "2007"]}, {"q": "What is the graduation rate of Alpha Phi Delta?", "ans": ["81%"], "wrong": ["56%", "71%", "92%"]}, {"q": "Who was Dr. Americo Ulysses Nicholas Camera?", "ans": ["Chairman of the Department of Romance Languages at Brooklyn College (1930–1938) and a Beta Eta alumnus; the scholastic achievement award is named for him"], "wrong": ["A Founder of Alpha Phi Delta at Syracuse", "The first National Chaplain of the Fraternity", "The author of the 1952 <i>Dokime</i>"]}, {"q": "What is the average Grade Point Average of an undergraduate Alpha Phi Delta brother?", "ans": ["3.27"], "wrong": ["2.0", "3.00", "3.31"]}, {"q": "Leadership conferences help our undergraduate members develop skills in what three key areas?", "ans": ["Chapter leadership", "Communication", "Recruitment"], "wrong": ["Fundraising", "Public speaking", "Event security"]}, {"q": "At what event are National Scholarship winners announced?", "ans": ["The National Convention"], "wrong": ["The Annual Meeting of the National Council", "The District Convention", "The Leadership Conference"]}]}];
+(function(){
+  var root=document.getElementById("quiz"),st=null;
+  function shuf(a){a=a.slice();for(var i=a.length-1;i>0;i--){var j=Math.floor(Math.random()*(i+1));var t=a[i];a[i]=a[j];a[j]=t}return a}
+  function html(h){root.innerHTML='<div class="qpanel qin">'+h+'</div>'}
+  function setup(){
+    var multi=QZ.length>1;
+    var rows=QZ.map(function(z){return '<label class="fl"><input type="checkbox" class="q-sec" value="'+z.id+'" checked><span>'+z.name+' ('+z.qs.length+' questions)</span></label>'}).join("");
+    html('<fieldset class="filt qsel"><legend class="sr">Sections to be quizzed on</legend>'+(multi?'<label class="fl"><input type="checkbox" id="q-all" checked><span>All</span></label>':'')+rows+'</fieldset><p class="qerr" id="qerr" role="alert" hidden>Select at least one section.</p><div class="bar center"><button class="btn pri" id="qstart" type="button">Start quiz</button></div>');
+    var secs=[].slice.call(root.querySelectorAll(".q-sec")),all=document.getElementById("q-all"),err=document.getElementById("qerr");
+    function sync(){err.hidden=true;if(!all)return;var n=secs.filter(function(x){return x.checked}).length;all.checked=n===secs.length;all.indeterminate=n>0&&n<secs.length}
+    if(all)all.addEventListener("change",function(){secs.forEach(function(x){x.checked=all.checked});sync()});
+    secs.forEach(function(x){x.addEventListener("change",sync)});
+    document.getElementById("qstart").addEventListener("click",function(){var ids=secs.filter(function(x){return x.checked}).map(function(x){return x.value});if(!ids.length){err.hidden=false;return}begin(ids)});
+  }
+  function begin(ids){var list=[];QZ.forEach(function(z){if(ids.indexOf(z.id)>=0)list=list.concat(z.qs)});st={ids:ids,list:shuf(list),i:0,score:0,missed:[]};ask()}
+  function ask(){
+    var q=st.list[st.i],n=st.list.length,multi=q.ans.length>1,type=multi?"checkbox":"radio";
+    var opts=shuf(q.ans.map(function(t){return{t:t,ok:true}}).concat(q.wrong.map(function(t){return{t:t,ok:false}})));
+    var ol=opts.map(function(o,k){return '<label class="opt"><input type="'+type+'" name="qo" value="'+k+'"><span class="otx">'+o.t+'</span><span class="tag" hidden></span></label>'}).join("");
+    html('<div class="qtop"><span class="cnt">Question '+(st.i+1)+' of '+n+'</span><button class="btn" id="qquit" type="button">Quit quiz</button></div><div class="prog"><i style="width:'+(st.i/n*100)+'%"></i></div><h4 class="qq" id="qq" tabindex="-1">'+q.q+'</h4><p class="qhint">'+(multi?'Select all that apply.':'Select one answer.')+'</p><div class="opts" id="opts">'+ol+'</div><p class="qerr" id="qerr" role="alert" hidden></p><div class="bar center" id="qbar"><button class="btn pri" id="qcheck" type="button">Check answer</button></div><p class="fb" id="fb" role="status" hidden></p>');
+    document.getElementById("qq").focus({preventScroll:true});
+    var inputs=[].slice.call(root.querySelectorAll("#opts input")),labels=[].slice.call(root.querySelectorAll(".opt")),err=document.getElementById("qerr");
+    inputs.forEach(function(x){x.addEventListener("change",function(){err.hidden=true;labels.forEach(function(l,k){l.classList.toggle("sel",inputs[k].checked)})})});
+    document.getElementById("qquit").addEventListener("click",setup);
+    document.getElementById("qcheck").addEventListener("click",function(){
+      var sel=inputs.map(function(x){return x.checked});
+      if(sel.indexOf(true)<0){err.textContent=multi?"Select at least one answer first.":"Select an answer first.";err.hidden=false;return}
+      var good=opts.every(function(o,k){return o.ok===sel[k]});
+      labels.forEach(function(l,k){var o=opts[k],t=l.querySelector(".tag");inputs[k].disabled=true;l.classList.remove("sel");var m=o.ok&&sel[k]?["ok","Correct"]:!o.ok&&sel[k]?["bad","Incorrect"]:o.ok?["miss","Missed"]:null;if(m){l.classList.add(m[0]);t.textContent=m[1];t.hidden=false}});
+      if(good)st.score++;else st.missed.push(q);
+      var fb=document.getElementById("fb");fb.className="fb "+(good?"ok":"bad");fb.textContent=good?"Correct.":(multi?"Not quite. The correct answers are marked above.":"Not quite. The correct answer is marked above.");fb.hidden=false;
+      var last=st.i===n-1,bar=document.getElementById("qbar");bar.innerHTML='<button class="btn pri" id="qnext" type="button">'+(last?"See results":"Next question")+'</button>';
+      var nx=document.getElementById("qnext");nx.focus({preventScroll:true});
+      nx.addEventListener("click",function(){if(last)finish();else{st.i++;ask()}});
+    });
+  }
+  function finish(){
+    var n=st.list.length,pct=Math.round(st.score/n*100);
+    var miss=st.missed.length?'<h4 class="qq">Review these</h4><ul class="qmiss">'+st.missed.map(function(q){return '<li><span class="mq">'+q.q+'</span><span class="ma">'+q.ans.join("; ")+'</span></li>'}).join("")+'</ul>':'<p class="qhint">You got every question right.</p>';
+    html('<div class="qres"><p class="cnt">Quiz complete</p><p class="qscore">'+st.score+' of '+n+'</p><p class="qhint">'+pct+'% correct</p></div>'+miss+'<div class="bar center"><button class="btn pri" id="qretake" type="button">Retake quiz</button><button class="btn" id="qchange" type="button">Change sections</button></div>');
+    document.getElementById("qretake").addEventListener("click",function(){begin(st.ids)});
+    document.getElementById("qchange").addEventListener("click",setup);
+  }
+  setup();
+})();
+
+var LESSONS=[
+/* ============ LESSON 1 ============ */
+{n:1,title:"Pledging Alpha Phi Delta",pages:[
+{k:"hero",t:"Pledging Alpha Phi Delta",s:"“As a pledge, you will learn about Alpha Phi Delta, its history, and its organization. This is the goal of pledging.”",c:"The Dokime · Section 1"},
+{k:"read",h:"The Pledge Program",ps:["The pledge program is a formal period of training that begins with a Baptism Ceremony, followed by weekly meetings with the Pledgemaster, and concludes with the Ritual of Initiation and the Oath of Brotherhood.","To be a member of Alpha Phi Delta, a young man must be asked to join. The fraternal bond is established through close friendships and time. The pledge period is necessary to establish a fraternal bond: it is a time for light-hearted events, teamwork, and learning about the fraternity, its members, and each other."],note:["Restrictions","Since underage drinking is unlawful and violates the Risk Management Policy, there shall be no alcohol consumption during the pledge program. Pledging is an educational process: you shall perform no activities physically harmful or morally objectionable of any kind, anywhere or at any time."]},
+{k:"steps",h:"The Ten Key Objectives",intro:"The substance of the educational content of the pledge program is comprised of ten key objectives. They cover fraternal history, heritage, and values. Tap an objective for more.",items:[
+["Learn <i>The Dokime</i>","Learn all of the information contained in the pledge handbook."],
+["Learn the fraternity songs","Especially <i>Our Fraternity</i> and <i>Fraternity Sweetheart</i>."],
+["Sponsor a community service project","Community service (or a school-related project)."],
+["Learn the National and District Officers","Know the names of the National and District Officers."],
+["Learn your Chapter’s officers","The officers of the Chapter that you are pledging."],
+["Learn the District entities","The names of the entities in your District."],
+["Learn all active Chapters","The names of all active Chapters."],
+["Complete a project for the Chapter","A project that serves the Chapter you are pledging."],
+["Meet each chapter brother","Acquire his complete signature."],
+["Complete the Italian Cultural Assignment","A group assignment, typed in complete, grammatically correct sentences, given to your Pledgemaster before the pledge period ends."]]},
+{k:"order",h:"Put the Pledge Process in Order",d:"Drag each step into its place, from first to last.",items:["Pass the online Risk Management Exam","Baptism Ceremony","Weekly meetings with the Pledgemaster","Ritual of Initiation and the Oath of Brotherhood"]},
+{k:"split",h:"The Name <i>Dokime</i>",a:{h:"Latin: <i>doce me</i>",t:"Pronounced “dough-chay-may.” It means <b>“teach me.”</b>"},b:{h:"Greek: <i>dokime</i>",t:"Pronounced “dough-ka-may.” It means <b>“the test.”</b>"},foot:"The name comes from both. The Latin is connected to our Italian heritage; the Greek to our fraternity system. Since editor Peter Sammartino introduced it in 1930, The Dokime has taught and tested thousands of brothers. This edition is the eighth revision since the first."},
+{k:"quote",q:"This is my Dokime. I will learn all the information it contains so that I may better understand Alpha Phi Delta; so that I may know the evolution of the fraternity system in the United States; and so that when the time comes, I may be ready to serve my Fraternity.",by:"The Pledge’s Creed · The Dokime, 1930 edition",note:"In the early days, a pledge recited “The Pledge’s Creed” before taking the Pledge’s Oath. It was his promise to himself, the Fraternity and his pledge brothers."},
+{k:"reveal",h:"Pledge Tools",d:"Tap a card to see what the book says.",items:[
+["The Pledge Pin","Worn until the right to wear the Fraternity Pin is earned. It symbolizes the pledge’s friendship with Alpha Phi Delta and his desire to join. Received at the Baptism Ceremony and worn on the left lapel of a jacket or the left collar of a shirt at all times. It belongs to the Chapter and is returned after the pledge period."],
+["The Pledge Book","Also called the Pledge Register. A bound volume kept by each undergraduate chapter as a permanent record of every Alpha Phi Delta pledge and pledge class coming through that chapter."],
+["A Pledge Book","Each member of a pledge class keeps one. It is the Chapter’s property until initiation, and serves as a record of the pledge period and a directory of the Chapter’s brothers."],
+["The Dokime","The pledge handbook. “Doce me” (teach me) and “dokime” (the test) give it its name."]]},
+{k:"match",h:"Match the Pledge Item",d:"Connect each item to what the book says about it.",pairs:[["Pledge Pin","Received at the Baptism Ceremony"],["The Pledge Book","Permanent record kept by the chapter"],["A Pledge Book","Chapter’s property until initiation"],["The Dokime","“Teach me” and “the test”"],["Pledge’s Creed","A promise to himself, recited before the Oath"]]},
+{k:"steps",h:"The Eight Pledge Responsibilities",intro:"Upon taking the Pledge’s Oath, a pledge takes upon himself these eight responsibilities. Tap one for the book’s explanation.",items:[
+["Improve his scholastic activity","Each pledge must give his studies priority and maintain a minimum grade point average. Alpha Phi Delta requires a minimum 2.0 to be considered for membership."],
+["Support his college and its activities","Learn about his school and actively support it, from attending sporting events to becoming a student leader."],
+["Help his community through his chapter","Sponsor a project with his pledge group or chapter to benefit the community."],
+["Know the information in <i>The Dokime</i>","History and traditions of Alpha Phi Delta, the history of the American fraternity system, and the structure and government of the fraternity."],
+["Know the traditions of Alpha Phi Delta","A key part of our traditions is the preservation of our Italian heritage."],
+["Know the history of the Chapter","A Chapter is the fraternity’s presence on a particular campus. Its history is part of our national history."],
+["Learn about the brothers of the Chapter","“Fraternity” comes from the Latin <i>frater</i>, “brother.”"],
+["Learn about the members of your pledge class","A pledge class is a microcosm of a Chapter. Members may start as strangers, but the Fraternity expects them to finish as brothers."]]},
+{k:"roster",h:"The Pledge Ten Commandments",d:"In earlier years, today’s Pledge Responsibilities were called “The Pledge Ten Commandments.” Restated verbatim from the 1960 edition: “The Pledge shall:”",num:true,items:["Increase his knowledge and love of God","Excel in scholarship","Support his college and its activities","Sponsor a community service project","Take the Pledge’s Oath and sign the Pledge Book","Know the history of the American fraternity system","Know the history of Alpha Phi Delta","Know the realm and government of Alpha Phi Delta","Know the hallmarks of Alpha Phi Delta","Know the fraternity members"]},
+{k:"sort",h:"What Alpha Phi Delta Asks and Offers",d:"Drag each statement from the book to the right side.",zones:["Alpha Phi Delta offers you","You are called to offer"],items:[["The advantages of a national fraternity",0],["Brotherly companionship and fraternal correction",0],["Exposure to culture",0],["Frankness and honesty with one’s brothers",0],["Be willing to accept responsibility",1],["You cannot be a snob",1],["Be socially and morally disciplined",1],["Strive to be a cultured gentleman",1]]}
+]},
+
+/* ============ LESSON 2 ============ */
+{n:2,title:"The American Fraternity System",pages:[
+{k:"hero",t:"Born With the Nation",s:"“In 1776, the United States and the American fraternity system were born.”",c:"The Dokime · Section 2"},
+{k:"read",h:"Birth of the American Fraternity",ps:["The American fraternity was born when this country was in its infancy. Both in origin and development, the United States and college fraternities grew side by side.","That year, Phi Beta Kappa, formed for social and literary purposes, was founded at the College of William and Mary, Williamsburg, Va. The Greek letters are the initial letters of three Greek words meaning “philosophy, the guide of life.” This is the origin of the Greek letter system of America."],note:["Honorary society","In time, Phi Beta Kappa became a strictly honorary society. Nonetheless, it remained the prototype of what has become a uniquely American institution — the fraternity."]},
+{k:"timeline",h:"Timeline: 1776–1850",items:[["1776","Phi Beta Kappa is established at the College of William &amp; Mary. Though academic in nature, it is the first Greek letter fraternity."],["1780","Phi Beta Kappa installs a Chapter at Yale, the first step of expansion to more than one school."],["1825","Kappa Alpha Society is founded at Union College, the first Greek letter social fraternity. It still exists today."],["1827","Sigma Phi (March) and Delta Phi (November) are established at Union College."],["1831","Sigma Phi establishes a Chapter at Hamilton College, making it the first true “national fraternity.”"],["1845","A prototype “fraternity house” opens at the University of Michigan: a log cabin in the woods used as a meeting site after the school banned the group from campus."]]},
+{k:"sort",h:"Sort the Triads",d:"Drag each fraternity into the triad it belongs to.",zones:["Union Triad (1825–1827)","Second Union Triad (1833–1847)","Miami Triad (1839–1855)","Lexington Triad (1865–1869)"],items:[["Kappa Alpha Society",0],["Sigma Phi",0],["Delta Phi",0],["Psi Upsilon",1],["Chi Psi",1],["Theta Delta Chi",1],["Beta Theta Pi",2],["Phi Delta Theta",2],["Sigma Chi",2],["Alpha Tau Omega",3],["Sigma Nu",3],["Kappa Alpha Order",3]]},
+{k:"reveal",h:"The Golden Age: 1851–1900",d:"Tap a year to reveal what happened.",items:[["1851","Adelphian becomes the first sorority, founded at Wesleyan Female College. It later took the name Alpha Delta Phi. Also in 1851: “The Mystical Seven Society” is established at Georgia’s Emory University, the first southern fraternity."],["1854","The first house specifically built as a fraternity house opens at Kenyon College."],["1856","The first Greek letter sorority, Theta Delta, is founded at Troy Female Seminary. The group remained local."],["1864","Theta Xi is founded at Rensselaer Polytechnic Institute: the first professional fraternity, and the only fraternity founded during the Civil War."],["1867","Chi Phi opens a Chapter in Edinburgh (Scotland): the first non-U.S. chapter. In 1879, Zeta Psi opens one in Toronto: the first Canadian expansion."],["1893","An Interfraternity and Inter-Sorority Congress meets at the World’s Columbian Exposition in Chicago. In 1897, South Carolina passes the first state law prohibiting fraternities; similar laws in Arkansas and Mississippi were all repealed or struck down."]]},
+{k:"read",h:"The Golden Age and the Birth of “Rush”",ps:["About four years after the close of the Civil War, many new colleges and universities began to be founded nationally. During this period, the American fraternity system grew in leaps and bounds, so much so that the latter half of the 19th Century is sometimes referred to as the “Golden Age of Fraternities.” Over 30 national fraternities were born between 1850 and 1900.","The term “rushing” originated in the 19th century. Fraternity members would collectively “rush” to the train station to meet incoming first-year students arriving to start their time in college."],note:["From rush to pledge pins","To claim a specific new student, one of the brothers would pin their colors on him in the form of lapel pins of sorts. These later developed into what we refer to today as pledge pins."]},
+{k:"match",h:"Match the Moment",d:"Connect each year to what happened.",pairs:[["1914","Alpha Phi Delta is founded at Syracuse"],["1930","First national fraternity headquarters is built (SAE Temple)"],["1945","G.I. Bill brings more men to college"],["1977","SUNY policy prohibiting national fraternities is reversed"],["1998","Congress passes the Freedom of Association Act"],["2020","Harvard rescinds its 2016 policy against members of single-sex groups"]]},
+{k:"facts",h:"Fraternities Today",items:[["380,000","undergraduate members in American men’s fraternities"],["100,000+","men initiated into fraternities annually, on average"],["4,200,000","living fraternity alumni in the world"],["6,186","fraternity chapters on roughly 800 college campuses"],["14 of 22","U.S. Presidents since 1900 were fraternity men"],["$31M","raised annually by fraternity chapters"]],foot:"Alpha Phi Delta’s average GPA for members was 3.27 in 2023 (2023-24 initiates averaged 3.31), and our 2023 graduation rate was 81%, which is 25 percentage points above the all-male national average."}
+]},
+
+/* ============ LESSON 3 ============ */
+{n:3,title:"The History of Alpha Phi Delta",pages:[
+{k:"hero",t:"Seven Friends at Syracuse",s:"“Unalterable forces, recognizing the dire necessity for its existence, led to its inception.”",c:"The Dokime · Section 3"},
+{k:"read",h:"The Seven Friends",ps:["The large number of students of Italian descent who populated colleges by the latter half of the 20th century were not commonly present in the early years of the 20th century. Thus, when a young Italian freshman, Cesidio A. Guarini, began his studies at Syracuse University in 1911, he found not one other fellow Italian student to share his common hopes and dreams as an American.","Then, in the fall of 1912, Ferdinand F. DiBartolo, Anthony T. Frascati, and Nicholas Frunzi, freshmen, met and became friends with Guarini. The following year, Otto Gelormini, Dominic T. Ciolli, and Joseph Cangiamila became part of this small group of friends."],note:["Il Circolo Italiano","On November 5, 1913, at the home of Professor Charles W. Cabeen (head of the department of Romance Languages), Il Circolo Italiano of Syracuse University was formed. Ferdinand DiBartolo was elected its first president."]},
+{k:"sort",h:"When Did Each Founder Join?",d:"Drag each of the seven founders to the fall he joined the group.",zones:["1911","Fall 1912","Fall 1913"],items:[["Cesidio A. Guarini",0],["Ferdinand F. DiBartolo",1],["Anthony T. Frascati",1],["Nicholas Frunzi",1],["Otto Gelormini",2],["Dominic T. Ciolli",2],["Joseph Cangiamila",2]]},
+{k:"timeline",h:"The Road to November 5, 1914",items:[["Nov. 5, 1913","Il Circolo Italiano is formed at Syracuse University."],["Feb. 7","Il Circolo Italiano hosts an Italian National Night, patterned on the Cosmopolitan Club’s evening of entertainment. It is a huge success."],["The idea","After the event, the seven were saddened that graduation would soon break up their band of brothers. Nicholas Frunzi suggested forming a fraternity."],["Oct. 20, 1914","An official meeting is held; the name Alpha Phi Delta is chosen."],["Nov. 5, 1914","The seven men swear the Oath of Brotherhood upon a sword. Alpha Phi Delta is born."],["First leader","Nicholas Frunzi is chosen as the first President. Under him, the basis for our constitution, ritual, pin, coat of arms, charter, banner, motto, pledge oath, whistle, and handshake were discussed."]]},
+{k:"quote",q:"Chancellor, I must correct the statement of my Brother DiBartolo. We come here to advise you that Alpha Phi Delta is already organized, and we are united by an oath.",by:"Cesidio Guarini, to Chancellor James R. Day",note:"Chancellor Day had said he did not think an Italian fraternity could ever attract more than a handful of men. After hearing the details, he replied: “Well, Gentlemen, there was no necessity for you to come at all.” The men already had what they desired: a brotherhood."},
+{k:"reveal",h:"From Local Group to National Fraternity",d:"Tap a card to see what happened.",items:[["May 1915","At Columbia, Il Circolo Italiano votes down the idea of forming a fraternity."],["Fall 1915","Four friends — Ernest DeMuria, Salvatore LaCorte, William Liccione, and Anthony Pascarella — organize Sigma Gamma Phi, whose Italian heritage went back to imperial Rome."],["Jan. 1916","Nicholas Frunzi transfers to Columbia and suggests the two groups amalgamate."],["June 1916","A merger meeting is held at Syracuse. The Syracuse chapter is declared Alpha; the Columbia chapter, Beta."],["1918","Joseph Cangiamila is killed in a military training operation: the first founder, and first brother, to die."],["Mar. 15, 1919","Six men are sworn in at Yale, our Gamma Chapter, the first outside New York. The second National Convention follows at the Hotel Taft in New Haven."]]},
+{k:"order",h:"Put the Founding Events in Order",d:"Drag each event into the right place, earliest first.",items:["Il Circolo Italiano is formed at Syracuse","Alpha Phi Delta is founded","Sigma Gamma Phi is founded at Columbia","The merger meeting is held at Syracuse","Gamma Chapter is chartered at Yale"]},
+{k:"match",h:"Key Moments, Matched",d:"Connect each year to what happened.",pairs:[["1926","First national directory is published"],["1928","Cleveland Alumni Club, our first Alumni Club"],["1929","The Kleos is established"],["1930","The Dokime is first published"],["1940","First National Awards are established"],["1953","Roman titles are replaced by American titles"],["1965","National Council approves non-Italians"],["1980","Alpha Phi Delta Foundation is established"]]},
+{k:"quote",q:"A group of Italo-American students, convinced of their innate status of equality, without fanfare, demonstrations, or protest, formed their own colonies. From this modest beginning, Alpha Phi Delta was born.",by:"Rev. Salvatore J. Federici (Psi ’33) · Dedication, 1973 History",note:"Rev. Federici was a long-serving National Chaplain who served until his death in 1968. The earliest written history was handwritten by Founder Dominic Ciolli in 1929; The History of Alpha Phi Delta Fraternity was published in 1973 by Stanley W. Raffa, PNP (Delta ’49), later updated by John Russo (2000) and Ronald Smé (2015, 2023)."},
+{k:"roster",h:"Fraternal Days of Special Observance",d:"On these days it is proper to wear a white carnation or engage in some other commemorative activity.",items:["Feb. 19 — Past National Presidents Day (birth of Salvatore LaCorte)","Aug. 12 — Deceased Brother Remembrance Day (death of Joseph Cangiamila)","Sept. 2 — Open Door Policy Anniversary Day","Oct. 12 — Columbus Day","Nov. 5 — Founders Day","Dec. 12 — Brother Frank Sinatra’s Birthday","Anniversary Day — a Chapter’s chartering date"]}
+]},
+
+/* ============ LESSON 4 ============ */
+{n:4,title:"Ethics and Values",pages:[
+{k:"hero",t:"The Ethics and Values of Alpha Phi Delta",s:"“When a brother speaks of the Creed, he speaks of what he believes as a brother of our Fraternity.”",c:"The Dokime · Section 4"},
+{k:"steps",h:"The Creed of Alpha Phi Delta",intro:"The word “creed” comes from the Latin <i>credo</i>, meaning “I believe.” We believe in and are committed to:",items:[
+["1","The unstinted contribution to the development of democratic ideals."],
+["2","The instillation in the minds of its members of the need to foster and develop the highest and noblest traits of man."],
+["3","The development of the common bond."],
+["4","The development and perpetuation of friendships formed during college days."],
+["5","The demonstration that pride in ancestry can strengthen one’s faith in America."],
+["6","The knowledge that culture can be and is essential to civilization."],
+["7","The advancement of the fact that our brotherhood — Italian by history, American by loyalty — is a family bound by an oath of mutual respect, uniting members of all chapters, eras, and backgrounds."]],plain:true},
+{k:"split",h:"The Seventh Creed, Then and Now",a:{h:"Previous editions",t:"“The advancement of the fact that there is really no segregation and that all members are American.”"},b:{h:"This edition",t:"“…Italian by history, American by loyalty — is a family bound by an oath of mutual respect…”"},foot:"The earlier phrasing was in response to and in defense of our Italian-only membership policies of the past. Since our Creeds are intended to be timeless, the underlying intentions are perhaps better and more timelessly expressed in this revision."},
+{k:"facts",h:"The World in 1914",items:[["92,000,000","people lived in America when the Fraternity was founded"],["&lt;½%","of them (less than half of one percent) were enrolled in college"],["1","Italian student enrolled at Syracuse when Guarini arrived in 1911"],["7","Italian men attended Syracuse after 1911–1913, when six more enrolled"]],foot:"These Italian students — most born in Italy — were not readily accepted. The American public was not used to their language, their accents, their customs, and their lifestyle. The seven were determined. They refused to be defeated by their exclusion from campus social life."},
+{k:"read",h:"Is Our Heritage Relevant to Me?",ps:["Alpha Phi Delta is an Italian heritage fraternity. Our traditions are bound up in this heritage; naturally, many Italian men — men who, by familial bonds, share this heritage — come through our doors. However, many of you reading this are likely not of Italian ancestry.","Since the 1960s, the fraternity has taught the relevancy of Italian heritage to its membership, which includes many men who are not Italian. One does not have to be Italian to appreciate our history, heritage, and values."],note:["Understanding our origins","To determine the meaning and purpose of any fraternal society, it is essential to understand its origins and to know about the people responsible for its foundations."]},
+{k:"split",h:"Two Views of Italian Heritage",a:{h:"The Alpha View",t:"Syracuse. “Italian-ness” came from a common language (Italian), home life (Italian family), food (Italian food), and customs (Italian traditions): the heritage brought over by Italian immigrants."},b:{h:"The Beta View",t:"Columbia, from Sigma Gamma Phi. Italian heritage went back to the imperial Roman era and all of the trappings of the Roman Empire. This view took precedence."},foot:"Most of the early Presidents of Alpha Phi Delta had hailed from Beta Chapter."},
+{k:"sort",h:"Which Chapter Gave Us This?",d:"Drag each item to the chapter whose view it came from.",zones:["Alpha (Syracuse)","Beta (Columbia)"],items:[["The white carnation (<i>garofano</i>)",0],["The torch",1],["The fasces",1],["The eagle",1],["The star of divine guidance",1],["The scroll",1],["The motto <i>Faciamus</i>",1],["Roman officer titles",1]]},
+{k:"match",h:"Roman Officer Titles",d:"After the merger, Roman titles replaced the Americanized ones. Connect each.",pairs:[["President","Consul"],["Vice President","Pro-Consul"],["Treasurer","Queastor"],["Secretary","Tribune"]]},
+{k:"reveal",h:"The Four Cardinal Virtues",d:"Having originated in Ancient Greece and Hebrew scripture, they were set out by Thomas Aquinas (1225–1274). Tap a virtue.",items:[["Prudence","Latin <i>prudentia</i>, “foresight, sagacity.” The ability to judge between virtuous and vicious actions at a given time and place. All virtues are regulated by it."],["Fortitude","Latin <i>fortitudo</i>, “courage.” Having and using “the strength to do what is right,” the strength of mind that enables a person to face challenging and confrontational scenarios and to endure pain and adversity."],["Justice","Latin <i>justitia</i>. “To render every man his due.” It includes generosity, honesty, truthfulness and integrity, and equal and impartial treatment."],["Temperance","Latin <i>temperantia</i>, “moderation in all that one does.” Consumption in all things, not necessarily abstinence."]]},
+{k:"read",h:"Meeting Your Fraternal Obligations",ps:["The initiation fee must be presented to the presiding National Officer (usually the District Governor) before the Ritual of Initiation begins. The Presiding Officer then takes (or confirms) your timely payment and forwards the money to our Central Office.","Your first act of fraternalism is timely payment."],note:["Chapter Assessment","The annual fee paid by a Chapter to the National Fraternity. It is a flat fee set by the National Council; it is pro-rated for Chapters of ten brothers or less. All brothers are to contribute so that it is paid in full and on time."]}
+]},
+
+/* ============ LESSON 5 ============ */
+{n:5,title:"Hallmarks and Heraldry",pages:[
+{k:"hero",t:"Hallmarks and Heraldry",s:"“Our Coat of Arms has many symbols, some of which are repeated on our Shield.”",c:"The Dokime · Section 5"},
+{k:"split",h:"The Fraternity Colors",a:{h:"Purple",t:"The royal color. Associated with the Roman Empire because Caesar’s state robes were purple. “The imperial purple” or “the purple” signifies Roman sovereignty. Producing it required the most costly dyes, and in Rome its wearing was the exclusive right of the royal family and the senatorial class."},b:{h:"White",t:"The symbol of purity, innocence, and spotlessness. The Romans customarily marked any favorable event worthy of remembrance with a white stone."}},
+{k:"read",h:"Flower and Motto",ps:["The white carnation (<i>garofano</i>) is the official flower of Alpha Phi Delta. It was chosen because it was the national flower of Italy when the Fraternity was founded. The carnation is a sign of a faithful disposition.","The fraternity motto, selected early in our history, is <i>faciamus</i>, which is Latin for “we do.” Simply put, <i>faciamus</i> is a call to action, a call to do something positive to help one’s family, fraternity, brother, school, country, and self."],note:["The first motto","The Fraternity’s first motto, “Brothers unto the Altars,” was replaced with “Faciamus” after the merger."]},
+{k:"quote",q:"The coat of arms of the National Fraternity is a field purpure on an escutcheon beveled at its chiefs, concave to the sides and coming to a point at its base. Main charge, a spread eagle argent holding a key in dexter talon and a torch in sinister talon, both bendwise.",by:"The Constitution of Alpha Phi Delta",note:"“At the base of the crest appear the mystic words, ‘Alpha Phi Delta.’” The symbols have specific historical meanings, but they also have a secret meaning revealed only to our brothers following their initiation."},
+{k:"reveal",h:"The Six Heraldic Symbols",d:"Tap a symbol to see its historical meaning.",items:[["The Eagle","The symbol of <b>victory</b>. From the Latin <i>aquila</i>, meaning dark: the largeness of the eagle would darken the sky in front of its prey. In Ancient Rome the eagle was used on the standard that led troops into battle."],["The Fasces","The symbol of <b>state authority</b>: the Roman bundle of birch rods. Benito Mussolini revived it as a symbol for his rule."],["The Key","The symbol of <b>dominion</b>. From the Latin <i>clavis</i>. A key has the power to let in or keep out. “The key to the city” represents trust with dominion over the people of that city."],["The Star","The symbol of <b>divine guidance</b>. It denotes a Divine quality bestowed from above, whereby men “shine in virtue.”"],["The Scroll","The symbol of <b>life and time</b>. In ancient Rome, philosophical truths would be written down on scrolls. On our scroll we write those words most important to us: Alpha Phi Delta."],["The Torch","The symbol of <b>immortality</b>. Once begun (ignited), it has a sense of eternity to it."]]},
+{k:"match",h:"Symbol and Meaning",d:"Connect each symbol to what it stands for.",pairs:[["Eagle","Victory"],["Fasces","State authority"],["Key","Dominion"],["Star","Divine guidance"],["Scroll","Life and time"],["Torch","Immortality"]]},
+{k:"roster",h:"Songs, Poem and Prayer",d:"The official song is “Alpha Phi Delta Rose,” though the two most commonly sung are “Our Fraternity” and “Fraternity Sweetheart.”",items:["“Alpha Phi Delta Rose” (official song) — Gabriel Jacoby, Phi","“Our Fraternity” — Joseph La Porta, Eta","“Fraternity Sweetheart” — Joseph La Porta, Eta","“From a Seed” (official poem) — Salvatore Spalla","The Fraternity Prayer — Brother Raymond Paolini, Epsilon Chapter","The Fraternity Whistle — adopted in the early 1930s; revived by Past National President Stanley Raffa"]},
+{k:"quote",q:"May the powerful lights and strength of thy Divine Grace move all members of Alpha Phi Delta to respond gladly and generously to the work of our fraternity. Amen.",by:"The Fraternity Prayer",note:"The prayer has a long form (rarely used) and a short form (most commonly used). Both end with this petition."},
+{k:"fill",h:"Fill in the Blanks",d:"Drag each word or name into the sentence where it belongs.",text:"The Fraternity motto is {0}, Latin for “we do.” The white carnation is called the {1} in Italian. “Alpha Phi Delta Rose” was written by {2}. “Our Fraternity” and “Fraternity Sweetheart” were written by {3}. The official poem, “From a Seed,” was written by {4}. The definition of our Coat of Arms is found in the {5}.",answers:["Faciamus","garofano","Gabriel Jacoby","Joseph La Porta","Salvatore Spalla","Constitution"],extra:["Raymond Paolini"]}
+]},
+
+/* ============ LESSON 6 ============ */
+{n:6,title:"National Governance",pages:[
+{k:"hero",t:"The National Governance of Alpha Phi Delta",s:"“The Fraternity operates based on a parliamentary system.”",c:"The Dokime · Section 6"},
+{k:"quote",q:"We, students in and alumni from American Colleges and Universities, in order to provide the means for unity of principle and of brotherhood among ourselves; to formulate an ideal of quality and excellence in all our undertakings; to insure system and order in all parts of this organization; and preserve and intensify our love for America and its institutions, do ordain and establish this Constitution as the fundamental law of Alpha Phi Delta Fraternity.",by:"Preamble to the Fraternity Constitution",note:"All brothers are bound by their Oath of Brotherhood to uphold the Constitution."},
+{k:"read",h:"The National Council",ps:["The National Council is the Fraternity’s supreme executive, legislative, and judicial body. Thus, all its decisions are final and not subject to review.","When in session, the National Council is chaired by the National President. He selects the date, time, and locale of the Annual Meeting (or any special Council meeting) and sets the agenda. By custom, the National President may pass the gavel temporarily to the Vice President or National Secretary when he is going to take a position on an issue in a floor debate, in the event of sickness, or in the context of elections, for purposes of impartiality."],note:["Who sits on it","Delegates from each Chapter and Alumni Club (two each), the National Officers, and the District Governors. The Undergraduate Coordinating Committee Chairman and the Alumni Coordinating Committee Chairman also sit. Only the National President votes to break a tie."]},
+{k:"steps",h:"Duties and Powers of the National Council",intro:"Tap a duty for more.",items:[["Approves the annual budget","Of the Fraternity."],["Charters new entities","Chapters, Alumni Clubs and Alumni Associations."],["Takes disciplinary action","As needed."],["Amends the Constitution","The fundamental law."],["Acts on Committee reports","It works through its Committee system."],["Elects the National President and National Vice President","Elected at the final session of its annual meeting."],["Confirms Constitutional Officers","Those appointed by the National President."],["Ratifies minutes and closes entities","Ratifies the minutes of its meetings; closes entities."]]},
+{k:"read",h:"The National President’s Role",ps:["Aside from a few days a year when the National Council or Executive Committee is in session, the National President presides over the fraternity. In cooperation with the National Officers, he may take any action necessary to run the fraternity, except action which the Constitution specifically reserves for the National Council or Executive Committee. For example, the president does not have the power to issue charters to new Chapters without Executive Committee or National Council approval.","In terms of discipline, the National President has the power to place on probation any member or entity with the consent of the Executive Committee. Likewise, he may remove any officer for cause."],note:["Terms of office","The National President must stand for election annually. The Bylaws allow as many as four terms, but by tradition National Presidents have served only two. Grand Consul Paul Salvatore, our 2nd and 11th President, is the only person to have served twice in non-consecutive terms."]},
+{k:"reveal",h:"The National Officers",d:"Tap an officer to see his duties.",items:[["National President","Leads the national fraternity. Presides at meetings of (and carries out decisions of) the National Council. Chairman of the Executive Committee."],["National Vice President","Assumes the duties and powers of the National President in his absence, and carries out duties delegated to him."],["National Secretary","Corresponds with officers and entities, distributes membership materials, coordinates fraternity merchandising, writes <i>The Chapter Letter</i>, receives award nominations, maintains minutes, oversees directories. With the National Treasurer, he forms the Central Office."],["VP for Public Relations","Coordinates the publication of newsworthy fraternity items for local media and chairs the Public Relations Committee."],["VP for Cultural Affairs","Directs the fraternity’s cultural activities, organizes the cultural program, and chairs the Cultural Affairs Committee."],["The Kleos Editor","Oversees the regular publication of the national magazine, <i>The Kleos</i>, and chairs <i>The Kleos</i> Committee."],["District Governors","National Officers elected within their own Districts. They preside at and approve members for initiation, oversee expansion, chair District meetings and Conventions, and carry out other duties specified by the Constitution."]]},
+{k:"read",h:"The Executive Committee",ps:["Of the many Committees of the National Council, the most powerful is the Executive Committee. It is composed of the District Governors and the National Officers. It meets during the National Convention and before the Annual Meeting of the National Council, but it may meet at any other time during the year if needed.","Except for a few Constitutional prohibitions, the Executive Committee may act in place of the National Council when the Council is not in session. The President is chairman of the Executive Committee."],note:["Who votes","The National Vice President, Vice President for Undergraduate Affairs, Vice President for Alumni Affairs, and the District Governors vote on the Executive Committee. The National President only votes to break a tie or change the outcome of a vote."]},
+{k:"match",h:"Who Chairs the Committee?",d:"Connect each committee to its chairman.",pairs:[["Ritual Committee","National Chaplain"],["Financial Affairs Committee","National Treasurer"],["Credentials Committee","Central Office"],["<i>The Kleos</i> Committee","The Kleos Editor"],["Expansion Committee","VP for Expansion"],["Member Education Committee","VP for Member Education"],["Undergraduate Coordinating Committee","VP for Undergraduate Affairs"]]},
+{k:"match",h:"National Awards and When They Were Added",d:"Eight National Awards are given annually at the National Convention. Connect each to its year.",pairs:[["Outstanding Community Service","Established in 1994"],["Outstanding Alumni Club","Added in 1970"],["Outstanding District","Added in 2006"],["Outstanding Alumni Association","Added in 2016"]]}
+]},
+
+/* ============ LESSON 7 ============ */
+{n:7,title:"The Realm of Alpha Phi Delta",pages:[
+{k:"hero",t:"The Realm of Alpha Phi Delta Fraternity",s:"“A unit of the fraternity — a Chapter, Alumni Club or Alumni Association.”",c:"The Dokime · Section 7"},
+{k:"timeline",h:"How Districts Came to Be",items:[["1924","Districts are first created as a way of “sectioning” the Fraternity. For the first few years, figureheads were chosen to lead each area."],["Early 1930s","The District system has become more defined, with clearer boundaries set."],["Initially","District Pro Consuls (i.e., District Governors) were elected by the National Council during its meeting."],["1934","They were elected by the entities of their District during the National Council meeting."],["1938","They came to be elected locally by the entities of the District. A districting plan remains unchanged until 1982."],["1982","Major redistricting redistributes the entities from seven districts into 13 districts."]]},
+{k:"roster",h:"Our Districts",d:"As of July 1, 2024, our Districts are listed below. Each spring (no later than June 1), all of the Chapters and Alumni Clubs in a district elect a District Governor at a District Convention. Alumni Associations hold no vote.",items:["Central Pennsylvania","Connecticut","Delaware Valley","Florida","Hudson Valley","Long Island","Midwest","New York City","North Jersey","Rocky Mountain","Upstate New York"]},
+{k:"steps",h:"The Seven Chapter Officers",intro:"Each chapter is required to elect from its membership brothers to fill seven key offices. Terms run one calendar year, January 1 to December 31.",items:[["The President","The official liaison between the Chapter and the school, the Chapter and the District Governor, and the Chapter and the National Fraternity. He is also the leader of the Chapter."],["The Vice President","Shall assist the President in his duties."],["The Secretary","Conducts the correspondence of the Chapter unless otherwise directed or delegated."],["The Treasurer","Shall conduct all Chapter financial operations."],["The Pledgemaster","Shall conduct the complete pledge period under the supervision of the chapter President and according to rules established by the National Council."],["The Historian","Shall serve as a historical record keeper of the Chapter."],["The Chaplain","Shall be the spiritual leader of the Chapter."]]},
+{k:"read",h:"Alumni Clubs and Alumni Associations",ps:["An Alumni Club is a regionally organized group of alumni who gather to promote the values of “permanent activity and support” for the Fraternity. Each must elect a President, Vice President, Secretary, Treasurer, Historian, and Chaplain annually, and have a Membership Committee to recruit new members.","An Alumni Association is a Chapter-based group of alumni; it exists to serve the Fraternity by remaining supportive and connected to a specific Undergraduate Chapter. Each must also have a Social Committee, a Reunion Committee, and a Membership Committee."],note:["Facts and history","The first Alumni Club ever formed was the Cleveland Alumni Club in 1928, made up of recent alumni from Kappa Chapter (Case Western Reserve). Alumni Associations were established in 1991."]},
+{k:"sort",h:"Club or Association?",d:"Drag each fact to the entity it describes.",zones:["Alumni Club","Alumni Association"],items:[["Regionally organized group of alumni",0],["First formed in Cleveland, 1928",0],["Gets two delegates on the National Council",0],["Chapter-based group of alumni",1],["Has only one delegate on the National Council",1],["Prohibited from voting at a District Convention",1],["Cannot use or access Chapter funds",1],["Established in 1991",1]]},
+{k:"timeline",h:"Key Moments in National Convention History",items:[["1919","After the Chartering of Gamma Chapter at Yale, the 2nd National Convention (first formal convention) is held at the Hotel Taft in New Haven, Conn."],["1942–45","No Conventions are held during the Second World War."],["1951","Conventions had only been held in urban locales; this year resort locations became the norm."],["1974","National Convention at the Picasso Resort in White Haven, Pa. sets an attendance record of 500."],["1987","The National Council Meeting is separated from the National Convention and held at a different time of year."],["2014","The 100th Anniversary Convention in Harrisburg, Pa. is the largest in our history with over 525 attendees."],["2020","The Convention is cancelled due to health restrictions. Conventions resume in 2021; the 100th National Convention is held in 2023."]]},
+{k:"reveal",h:"Meetings and Special Awards",d:"Tap a card.",items:[["National Council Meeting","Held annually between January 15 and March 31, with at least 90 days’ notice. Special meetings may be called on sixty (60) days’ notice. Elections for the VP for Alumni Affairs and VP for Undergraduate Affairs are held between the first and second sessions."],["National Convention","Held between June 30 and September 15 each year. The Executive Committee must meet between the opening night and the close of the Awards Banquet on the last full evening."],["Memorial Service","Remembers brothers who died in the past year. A wreath is placed; after each name a <i>garofano</i> is placed by the National President, assisted by the National Vice President, and the word “present” is announced."],["Expansion and Communication","The Expansion Award goes to a brother who worked diligently for expansion; the Vincent Larcy Communication Award to a brother who promoted communications within the fraternity."],["The Pioneer Award","Given to the one member of an expansion project or reactivation group who was the key leader in making that group come to fruition."],["Lifetime Achievement","The Fraternity’s highest honor, awarded rarely: Adam DiVincenzo, Stanley W. Raffa, A. Joseph Creston, Albert E. Palazzo, Anthony J. Carfang, Alexander B. Fafara, Jr., and John J. Russo."]]},
+{k:"order",h:"Where Was Central Office?",d:"Central Office has moved many times since 1946. Put these stops in order, earliest first.",items:["Cambridge, Massachusetts (1946)","Pittsburgh, Pennsylvania (1960)","Dumont, New Jersey (1978)","Cape May, New Jersey (1985)","Dover, Delaware (1992)","Camden, Delaware (2020–present)"]},
+{k:"roster",h:"The First 24 Chapters",d:"Alpha through Omega, with each one’s affiliated school.",cols:2,items:["Alpha — Syracuse University","Beta — Columbia University","Gamma — Yale University","Delta — Polytechnic University","Epsilon — SUNY at Buffalo","Zeta — Rensselaer Polytechnic Institute","Eta — City College of New York","Theta — New York University (The Bronx)","Iota — Union College","Kappa — Case Western Reserve","Lambda — University of Pennsylvania","Mu — Cornell University","Nu — University of Pittsburgh","Xi — Ohio State University","Omicron — University of Michigan","Pi — West Virginia University","Rho — Carnegie-Mellon Institute","Sigma — Boston University","Tau — Massachusetts Institute of Technology","Upsilon — Harvard University","Phi — University of Alabama","Chi — Pennsylvania State University","Psi — Duquesne University","Omega — University of Rochester"]},
+{k:"memory",h:"Chapter Memory",d:"Flip two cards at a time to match each chapter with its school.",pairs:[["Alpha","Syracuse"],["Beta","Columbia"],["Gamma","Yale"],["Kappa","Case Western Reserve"],["Mu","Cornell"],["Sigma","Boston University"],["Chi","Penn State"],["Psi","Duquesne"]]}
+]},
+
+/* ============ LESSON 8 ============ */
+{n:8,title:"Scholarship, Leadership and Achievement",pages:[
+{k:"hero",t:"Scholarship, Leadership and Achievement",s:"“Academic excellence is one of the constant reinforcements the Fraternity gives to the undergraduate brothers.”",c:"The Dokime · Section 8"},
+{k:"read",h:"Academics and Alpha Phi Delta",ps:["The fraternity’s purpose is to provide a social and fraternal atmosphere that allows students to better acclimate themselves to college life and thus do better in their collegiate studies.","What the 1952 Dokime is saying in 21st-century language is that a college education should make you a well-rounded individual. The Fraternity believes that Alpha Phi Delta helps to make you a well-rounded individual by embellishing (not detracting from) your scholastic pursuits."],note:["The 2.0 minimum","Alpha Phi Delta requires a minimum 2.0 grade point average to be considered for membership. That should be viewed as a bare minimum to quickly build upon… not a GPA with which to be pleased or proud."]},
+{k:"quote",q:"The purpose of a college education is to train the mind to adapt itself quickly to novel situations… [I]n other words, its purpose is to discipline the mental processes so that you will be able to think on your feet; to instill in you the habit and ability to use your brain.",by:"The Dokime, 1952 edition · Scholarship"},
+{k:"split",h:"Knowledge and Wisdom",a:{h:"Knowledge",t:"“Knowledge dwells in heads replete with thoughts of other men.” “Knowledge is proud that he has learned so much.”"},b:{h:"Wisdom",t:"“Wisdom dwells in minds attentive to their own.” “Wisdom is humble that he knows not more.”"},foot:"“Remember that the objective of study should be to gain wisdom rather than knowledge. Facts are important and must be learned, but far more important is to gain wisdom and to train the mind and judgment so that truth may be distinguished from error.” — Dr. George F. Swain, <i>How to Study</i>, quoted in the 1952 Dokime"},
+{k:"steps",h:"Eleven Essentials of Effective Study",intro:"From the 1931 Edition of <i>The Dokime</i>. “Effective study involves the following essentials.” Tap one for the full text.",items:[["Good physical and mental condition","Obtained by regular exercise, adequate recreation, sufficient food and sleep."],["A definite daily study program","Fix certain hours for study and stick to them."],["Avoid worry and excitement","Banish all other thoughts from your mind. Concentrate on what you are doing."],["Arrange your chair, clear your desk","And adjust your light."],["Know definitely what you are to study","Pick out salient points and give special emphasis to them."],["You must feel that the task is worthwhile","That is another step to your ultimate success."],["Acquaintance with related books","And with the special vocabulary involved in the subject."],["An outline of the lesson","Usually necessary. Keep your notes accurately and neatly."],["Make the connection","Of the day’s lesson to the lesson of the previous day and to the rest of the course."],["Over-learn your lesson","To provide for forgetting."],["Have faith in yourself","“You want to learn, you can learn, and, by Jove, you will learn.”"]]},
+{k:"facts",h:"Academic Recognition in Numbers",items:[["1980","year the Alpha Phi Delta Foundation was formed"],["75","scholarships awarded in 2023"],["3.27","average GPA of an Alpha Phi Delta undergraduate, fall 2023"],["81%","graduation rate over four years, vs. 56% nationally"]],foot:"The Foundation’s primary function is to raise funds and make grants for charitable, educational and cultural activities. All contributions are tax deductible. The Scholarship Application is available online each spring."},
+{k:"reveal",h:"Programs That Reward Excellence",d:"Tap a program.",items:[["Honor","The Dr. A.U.N. Camera Scholastic Achievement Award Certificate is named for the late Dr. Americo Ulysses Nicholas Camera, Chairman of the Department of Romance Languages at Brooklyn College from 1930 to 1938 and a Beta Eta alumnus. Awarded every semester to the brother with the highest GPA in his chapter."],["Scholarship Awards","The Foundation’s Scholarship Award applications are distributed and/or made accessible to our brothers. The winners are announced at the National Convention."],["Grade Point Averages","GPAs of pledges and brothers are tracked by Central Office. Brothers who fall below certain minimums face the loss of office or suspension from Chapter activity. Both our averages are higher than the average collegiate all-male GPA."],["Graduation Rate","81% over the previous four years, 25 percentage points above the U.S. national average of 56% for male college students."],["Leadership Conferences","The annual program places a strong emphasis on raising GPAs and achieving academic success, and develops skills in chapter leadership, communication, recruitment, and other essential areas."]]},
+{k:"match",h:"Match the Fact",d:"Connect each item to its detail.",pairs:[["Foundation formed","1980"],["Minimum GPA for membership","2.0"],["Camera Award goes to","Highest chapter GPA each semester"],["National Scholarship winners announced","At the National Convention"],["Graduation rate","81%"],["Average undergraduate GPA","3.27"]]}
+]}
+];
+
+(function(){
+  var LS=SEC.slice(0,8),root=document.getElementById("lroot"),KEY="apdLessons",store={};
+  try{store=JSON.parse(localStorage.getItem(KEY)||"{}")||{}}catch(e){store={}}
+  function save(){try{localStorage.setItem(KEY,JSON.stringify(store))}catch(e){}}
+  function shuf(a){a=a.slice();for(var i=a.length-1;i>0;i--){var j=Math.floor(Math.random()*(i+1));var t=a[i];a[i]=a[j];a[j]=t}return a}
+  function open_(n){return n===1||(store[n-1]&&store[n-1]>=80)}
+  function put(h){root.innerHTML='<div class="lpanel">'+h+'</div>';window.scrollTo(0,0)}
+  var reduce=window.matchMedia&&window.matchMedia("(prefers-reduced-motion:reduce)").matches;
+  var INTRO=["The pledge program, the Dokime, the pledge tools and the eight responsibilities.","The birth of the American fraternity, the triads, the Golden Age and today’s numbers.","Seven friends at Syracuse, the merger of 1916, and the milestones that followed.","The Creed, two views of Italian heritage, and the Cardinal Virtues.","Colors, flower, motto, the six heraldic symbols, songs and prayer.","The Preamble, the National Council, the Executive Committee and the National Officers.","Districts, chapter officers, alumni entities, conventions and the first 24 chapters.","Knowledge and wisdom, the eleven essentials of study, and academic recognition."];
+  function list(){
+    var h=LS.map(function(x,i){var n=i+1,ok=open_(n),sc=store[n];var st=sc>=80?'Passed '+sc+'%':ok?(sc!=null?'Best '+sc+'%':'Start'):'Locked';
+      return '<button type="button" class="lbtn'+(sc>=80?' done':'')+'" style="--i:'+i+'" data-n="'+n+'"'+(ok?'':' disabled')+'><span class="ln">'+n+'</span><span class="lt2"><b>Lesson '+n+': '+x[1]+'</b><span>'+(ok?INTRO[i]:'Pass Lesson '+(n-1)+' with 80% or better to unlock.')+'</span></span><span class="ls">'+st+'</span></button>'}).join("");
+    var fo=open_(9),fs=store[9];
+    h+='<button type="button" class="lbtn final'+(fs>=80?' done':'')+'" style="--i:8" data-n="9"'+(fo?'':' disabled')+'><span class="ln">★</span><span class="lt2"><b>Final Test</b><span>'+(fo?'40 questions from all eight lessons. Score 80% or better to pass.':'Pass Lesson 8 with 80% or better to unlock.')+'</span></span><span class="ls">'+(fs>=80?'Passed '+fs+'%':fo?(fs!=null?'Best '+fs+'%':'Start'):'Locked')+'</span></button>';
+    put(h);
+    root.querySelectorAll(".lbtn").forEach(function(b){b.addEventListener("click",function(){var n=+b.getAttribute("data-n");if(n===9)quiz(9);else read(n,0)})});
+  }
+
+  /* ---------- page renderers ---------- */
+  function st(i){return ' data-s style="--i:'+i+'"'}
+  var R={};
+  R.hero=function(p,el,n){
+    el.innerHTML='<div class="lp lp-hero"><div class="hn" aria-hidden="true">'+n+'</div><p class="hk"'+st(0)+'>'+p.c+'</p><h3 class="ht"'+st(1)+'>'+p.t+'</h3><span class="hline"></span><p class="hs"'+st(3)+'>'+p.s+'</p></div>';
+  };
+  R.read=function(p,el){
+    el.innerHTML='<div class="lp lp-read"><h3 class="ph">'+p.h+'</h3><div class="rw"><div class="rt">'+p.ps.map(function(t,i){return '<p'+st(i)+'>'+t+'</p>'}).join("")+'</div><aside class="rn"'+st(p.ps.length)+'><b>'+p.note[0]+'</b><p>'+p.note[1]+'</p></aside></div></div>';
+  };
+  R.quote=function(p,el){
+    el.innerHTML='<div class="lp lp-quote"><span class="qm" aria-hidden="true">“</span><blockquote'+st(0)+'>'+p.q+'</blockquote><cite'+st(2)+'>'+p.by+'</cite>'+(p.note?'<p class="qn"'+st(4)+'>'+p.note+'</p>':'')+'</div>';
+  };
+  R.timeline=function(p,el){
+    el.innerHTML='<div class="lp lp-tl"><h3 class="ph">'+p.h+'</h3><ol class="tl">'+p.items.map(function(x,i){return '<li'+st(i)+'><span class="td"></span><b>'+x[0]+'</b><p>'+x[1]+'</p></li>'}).join("")+'</ol></div>';
+  };
+  R.steps=function(p,el){
+    var h='<div class="lp lp-steps"><h3 class="ph">'+p.h+'</h3><p class="lintro">'+p.intro+'</p><div class="sl">';
+    if(p.plain)h+=p.items.map(function(x,i){return '<div class="sp"'+st(i)+'><span class="sn2">'+x[0]+'</span><p>'+x[1]+'</p></div>'}).join("");
+    else h+=p.items.map(function(x,i){return '<div class="sx"'+st(i)+'><button type="button" class="sxb" aria-expanded="false"><span class="sn2">'+(i+1)+'</span><span class="sxt">'+x[0]+'</span><span class="car2" aria-hidden="true"></span></button><div class="sxbody"><div class="sxc"><p>'+x[1]+'</p></div></div></div>'}).join("");
+    el.innerHTML=h+'</div></div>';
+    el.querySelectorAll(".sxb").forEach(function(b){b.addEventListener("click",function(){var o=b.getAttribute("aria-expanded")!=="true";b.setAttribute("aria-expanded",o);b.parentNode.classList.toggle("open",o)})});
+  };
+  R.facts=function(p,el){
+    el.innerHTML='<div class="lp lp-facts"><h3 class="ph">'+p.h+'</h3><div class="fg">'+p.items.map(function(x,i){return '<div class="ft"'+st(i)+'><b class="fv" data-v="'+x[0]+'">'+x[0]+'</b><span>'+x[1]+'</span></div>'}).join("")+'</div>'+(p.foot?'<p class="lfoot"'+st(p.items.length)+'>'+p.foot+'</p>':'')+'</div>';
+    if(reduce)return;
+    el.querySelectorAll(".fv").forEach(function(e){
+      var v=e.getAttribute("data-v"),m=v.match(/^(\D*)([\d,]*\.?\d+)(.*)$/);if(!m)return;
+      var comma=m[2].indexOf(",")>=0,dec=(m[2].split(".")[1]||"").length,num=parseFloat(m[2].replace(/,/g,""));
+      if(!comma&&num>=1000&&num<2100)return;
+      var t0=null,dur=1100;
+      function fmt(x){var s=dec?x.toFixed(dec):String(Math.round(x));if(comma)s=Number(s).toLocaleString("en-US",{minimumFractionDigits:dec,maximumFractionDigits:dec});return m[1]+s+m[3]}
+      e.textContent=fmt(0);
+      function step(ts){if(!e.isConnected)return;if(t0===null)t0=ts;var k=Math.min(1,(ts-t0)/dur);k=1-Math.pow(1-k,3);e.textContent=fmt(num*k);if(k<1)requestAnimationFrame(step);else e.innerHTML=v}
+      setTimeout(function(){requestAnimationFrame(step)},250);
+    });
+  };
+  R.reveal=function(p,el){
+    el.innerHTML='<div class="lp lp-rv"><h3 class="ph">'+p.h+'</h3>'+(p.d?'<p class="lintro">'+p.d+'</p>':'')+'<div class="rg">'+p.items.map(function(x,i){return '<button type="button" class="rv"'+st(i)+' aria-pressed="false"><span class="rvi"><span class="rvf"><b>'+x[0]+'</b><i>Tap to reveal</i></span><span class="rvb"><span>'+x[1]+'</span></span></span></button>'}).join("")+'</div></div>';
+    el.querySelectorAll(".rv").forEach(function(b){b.addEventListener("click",function(){var o=b.classList.toggle("on");b.setAttribute("aria-pressed",o)})});
+  };
+  R.split=function(p,el){
+    el.innerHTML='<div class="lp lp-split"><h3 class="ph">'+p.h+'</h3><div class="sg"><div class="sa"><h4>'+p.a.h+'</h4><p>'+p.a.t+'</p></div><span class="vs" aria-hidden="true">vs</span><div class="sb"><h4>'+p.b.h+'</h4><p>'+p.b.t+'</p></div></div>'+(p.foot?'<p class="lfoot"'+st(3)+'>'+p.foot+'</p>':'')+'</div>';
+  };
+  R.roster=function(p,el){
+    el.innerHTML='<div class="lp lp-ros"><h3 class="ph">'+p.h+'</h3>'+(p.d?'<p class="lintro">'+p.d+'</p>':'')+'<'+(p.num?'ol':'ul')+' class="ro'+(p.cols?' c2':'')+'">'+p.items.map(function(t,i){return '<li'+st(i%12)+'>'+(p.num?'<span class="rn2">'+(i+1)+'</span>':'')+'<span>'+t+'</span></li>'}).join("")+'</'+(p.num?'ol':'ul')+'></div>';
+  };
+
+  /* ---------- mini quiz shell ---------- */
+  function shell(p,kind,inner){
+    return '<div class="lp lp-act"><span class="abadge">Mini quiz · optional</span><h3 class="ph">'+p.h+'</h3>'+(p.d?'<p class="lintro">'+p.d+'</p>':'')+inner+'<div class="abar"><button type="button" class="btn pri" data-a="check">Check answers</button><button type="button" class="btn" data-a="reset">Start over</button><span class="ascore" aria-live="polite"></span></div></div>';
+  }
+  function score(el,x,n,extra){var s=el.querySelector(".ascore");s.className="ascore show "+(x===n?"perfect":"");s.innerHTML='<b>'+x+' out of '+n+'</b>'+(extra?' · '+extra:'')}
+
+  /* ---------- drag and drop (sort / order / fill) ---------- */
+  function dnd(p,el,mode,n){
+    var items,zones,cap,locked;
+    function init(){
+      locked=false;
+      if(mode==="sort"){items=p.items.map(function(x){return{t:x[0],z:x[1],at:-1}});zones=p.zones;cap=99}
+      else if(mode==="order"){items=p.items.map(function(t,i){return{t:t,z:i,at:-1}});zones=p.items.map(function(_,i){return String(i+1)});cap=1}
+      else{items=p.answers.map(function(t,i){return{t:t,z:i,at:-1}}).concat((p.extra||[]).map(function(t){return{t:t,z:-2,at:-1}}));zones=p.answers.map(function(_,i){return String(i+1)});cap=1}
+      items=shuf(items);items.forEach(function(it,k){it.id=k});
+    }
+    init();
+    var sel=null,suppress=false;
+    var inner;
+    if(mode==="sort")inner='<div class="zones">'+zones.map(function(z,i){return '<div class="zone"><h5>'+z+'</h5><div class="zbox" data-zone="'+i+'" tabindex="0" role="group" aria-label="'+z.replace(/<[^>]+>/g,"")+'"></div></div>'}).join("")+'</div>';
+    else if(mode==="order")inner='<ol class="slots">'+zones.map(function(z,i){return '<li class="slot"><span class="slotn">'+z+'</span><div class="zbox one" data-zone="'+i+'" tabindex="0" role="group" aria-label="Position '+z+'"></div></li>'}).join("")+'</ol>';
+    else inner='<p class="fillp">'+p.text.replace(/\{(\d+)\}/g,function(_,i){return '<span class="zbox one inl" data-zone="'+i+'" tabindex="0" role="group" aria-label="Blank '+(+i+1)+'"></span>'})+'</p>';
+    el.innerHTML=shell(p,mode,inner+'<div class="tray" data-tray="1" tabindex="0" role="group" aria-label="Choices"></div>');
+    var tray=el.querySelector(".tray"),boxes=[].slice.call(el.querySelectorAll(".zbox")),act=el.querySelector(".lp-act");
+    function chip(it){return '<button type="button" class="chip'+(sel===it.id?' sel':'')+(it.res?' '+it.res:'')+'" data-id="'+it.id+'"'+(locked?' disabled':'')+'>'+it.t+'</button>'}
+    function draw(){
+      tray.innerHTML=items.filter(function(i){return i.at===-1}).map(chip).join("")||'<span class="empty">All placed</span>';
+      boxes.forEach(function(b){var z=+b.getAttribute("data-zone");b.innerHTML=items.filter(function(i){return i.at===z}).map(chip).join("");b.classList.toggle("hasone",!!b.innerHTML)});
+      act.classList.toggle("selecting",sel!==null);
+      el.querySelectorAll(".chip").forEach(wire);
+    }
+    function place(id,z){
+      var it=items.filter(function(x){return x.id===id})[0];
+      if(z>=0&&cap===1){items.forEach(function(o){if(o.at===z&&o!==it)o.at=-1})}
+      it.at=z;sel=null;draw();
+    }
+    function wire(c){
+      var id=+c.getAttribute("data-id"),sx,sy,ghost=null,moved=false,down=false;
+      c.addEventListener("click",function(e){e.stopPropagation();if(suppress){suppress=false;return}if(locked)return;if(sel!==null&&sel!==id){var cz=c.closest("[data-zone],[data-tray]");if(cz){place(sel,cz.hasAttribute("data-tray")?-1:+cz.getAttribute("data-zone"));return}}sel=(sel===id?null:id);draw();var nc=el.querySelector('.chip[data-id="'+id+'"]');if(nc&&sel===id)nc.focus({preventScroll:true})});
+      c.addEventListener("pointerdown",function(e){if(locked||e.button>0)return;down=true;moved=false;sx=e.clientX;sy=e.clientY;try{c.setPointerCapture(e.pointerId)}catch(_){}});
+      c.addEventListener("pointermove",function(e){
+        if(!down)return;
+        if(!moved&&Math.hypot(e.clientX-sx,e.clientY-sy)>8){moved=true;ghost=c.cloneNode(true);ghost.classList.add("ghost");ghost.removeAttribute("data-id");document.body.appendChild(ghost);c.classList.add("lift")}
+        if(moved){ghost.style.left=e.clientX+"px";ghost.style.top=e.clientY+"px";
+          var t=document.elementFromPoint(e.clientX,e.clientY),zb=t&&t.closest("[data-zone],[data-tray]");boxes.concat([tray]).forEach(function(b){b.classList.toggle("over",b===zb)})}
+      });
+      function end(e){
+        if(!down)return;down=false;
+        if(moved){suppress=true;setTimeout(function(){suppress=false},0);
+          var t=document.elementFromPoint(e.clientX,e.clientY),zb=t&&t.closest("[data-zone],[data-tray]");
+          if(ghost)ghost.remove();ghost=null;boxes.concat([tray]).forEach(function(b){b.classList.remove("over")});
+          if(zb)place(id,zb.hasAttribute("data-tray")?-1:+zb.getAttribute("data-zone"));else draw();
+        }
+      }
+      c.addEventListener("pointerup",end);
+      c.addEventListener("pointercancel",function(e){if(ghost)ghost.remove();ghost=null;down=false;moved=false;c.classList.remove("lift")});
+    }
+    function target(b){return function(){if(sel===null||locked)return;place(sel,b.hasAttribute("data-tray")?-1:+b.getAttribute("data-zone"))}}
+    boxes.concat([tray]).forEach(function(b){b.addEventListener("click",target(b));b.addEventListener("keydown",function(e){if((e.key==="Enter"||e.key===" ")&&e.target===b&&sel!==null){e.preventDefault();target(b)()}})});
+    el.querySelector('[data-a="check"]').addEventListener("click",function(){
+      if(locked)return;locked=true;sel=null;var ok=0,tot=0;
+      items.forEach(function(it){if(it.z>=0){tot++;if(it.at===it.z){ok++;it.res="ok"}else it.res="bad"}else if(it.at>=0)it.res="bad"});
+      draw();score(el,ok,tot);
+    });
+    el.querySelector('[data-a="reset"]').addEventListener("click",function(){init();sel=null;var s=el.querySelector(".ascore");s.className="ascore";s.textContent="";draw()});
+    draw();
+  }
+
+  /* ---------- connect (match) ---------- */
+  function match(p,el){
+    var N=p.pairs.length,order,links,sel,locked;
+    function init(){order=shuf(p.pairs.map(function(_,i){return i}));links={};sel=null;locked=false}
+    init();
+    el.innerHTML=shell(p,"match",'<div class="mw" id="mw"><svg class="ml" aria-hidden="true"></svg><div class="mcol mL">'+p.pairs.map(function(x,i){return '<button type="button" class="mb" data-s="L" data-i="'+i+'">'+x[0]+'</button>'}).join("")+'</div><div class="mcol mR"></div></div>');
+    var mw=el.querySelector(".mw"),svg=el.querySelector(".ml"),mR=el.querySelector(".mR"),Ls=[].slice.call(el.querySelectorAll('[data-s="L"]'));
+    function build(){mR.innerHTML=order.map(function(i,pos){return '<button type="button" class="mb" data-s="R" data-i="'+i+'">'+p.pairs[i][1]+'</button>'}).join("");
+      [].slice.call(mR.children).forEach(function(b){b.addEventListener("click",function(){clickR(+b.getAttribute("data-i"))})})}
+    function rBtn(i){return mR.querySelector('[data-i="'+i+'"]')}
+    function clickL(i){if(locked)return;if(links[i]!==undefined){delete links[i];sel=null}else sel=(sel===i?null:i);draw()}
+    function clickR(j){if(locked)return;
+      for(var k in links)if(links[k]===j&&sel===null){delete links[k];draw();return}
+      if(sel===null)return;
+      for(var k2 in links)if(links[k2]===j)delete links[k2];
+      links[sel]=j;sel=null;draw()}
+    Ls.forEach(function(b){b.addEventListener("click",function(){clickL(+b.getAttribute("data-i"))})});
+    var res=null;
+    function draw(){
+      Ls.forEach(function(b,i){b.classList.toggle("sel",sel===i);b.classList.toggle("lk",links[i]!==undefined);b.classList.remove("ok","bad");b.disabled=false});
+      [].slice.call(mR.children).forEach(function(b){var j=+b.getAttribute("data-i");b.classList.remove("ok","bad");b.classList.toggle("lk",Object.keys(links).some(function(k){return links[k]===j}))});
+      if(res){Ls.forEach(function(b,i){if(links[i]!==undefined){b.classList.add(res[i]?"ok":"bad");rBtn(links[i]).classList.add(res[i]?"ok":"bad")}})}
+      var W=mw.getBoundingClientRect(),h="";
+      Object.keys(links).forEach(function(k){var a=Ls[+k].getBoundingClientRect(),b=rBtn(links[k]).getBoundingClientRect();
+        var x1=a.right-W.left,y1=a.top+a.height/2-W.top,x2=b.left-W.left,y2=b.top+b.height/2-W.top,m=(x1+x2)/2;
+        h+='<path class="'+(res?(res[+k]?'ok':'bad'):'')+'" d="M'+x1+' '+y1+' C'+m+' '+y1+' '+m+' '+y2+' '+x2+' '+y2+'"/>'});
+      svg.setAttribute("viewBox","0 0 "+W.width+" "+W.height);svg.innerHTML=h;
+    }
+    build();
+    window.addEventListener("resize",function(){if(mw.isConnected)draw()});
+    el.querySelector('[data-a="check"]').addEventListener("click",function(){if(locked)return;locked=true;sel=null;res={};var ok=0;
+      for(var i=0;i<N;i++){res[i]=links[i]===i;if(res[i])ok++}draw();score(el,ok,N)});
+    el.querySelector('[data-a="reset"]').addEventListener("click",function(){init();res=null;var s=el.querySelector(".ascore");s.className="ascore";s.textContent="";build();draw()});
+    setTimeout(draw,60);
+  }
+
+  /* ---------- memory ---------- */
+  function memory(p,el){
+    var N=p.pairs.length,cards,open,missed,tries,busy,matched;
+    function init(){cards=shuf(p.pairs.reduce(function(a,x,i){return a.concat([{p:i,t:x[0],k:"a"},{p:i,t:x[1],k:"b"}])},[]));open=[];missed={};tries=0;busy=false;matched=0}
+    init();
+    el.innerHTML=shell(p,"memory",'<div class="mg"></div>');
+    var g=el.querySelector(".mg");
+    function build(){g.innerHTML=cards.map(function(c,i){return '<button type="button" class="mc" data-i="'+i+'" aria-label="Card '+(i+1)+'"><span class="mci"><span class="mcf">ΑΦΔ</span><span class="mcb '+c.k+'">'+c.t+'</span></span></button>'}).join("");
+      [].slice.call(g.children).forEach(function(b){b.addEventListener("click",function(){flip(+b.getAttribute("data-i"),b)})})}
+    function flip(i,b){
+      if(busy||b.classList.contains("on")||b.classList.contains("done"))return;
+      b.classList.add("on");open.push(i);
+      if(open.length===2){tries++;var a=cards[open[0]],c=cards[open[1]],ba=g.children[open[0]],bc=g.children[open[1]];
+        if(a.p===c.p){ba.classList.add("done");bc.classList.add("done");open=[];matched++;
+          if(matched===N){var okc=N-Object.keys(missed).length;score(el,okc,N,"matched on the first try · "+tries+" tries")}}
+        else{busy=true;missed[a.p]=1;missed[c.p]=1;setTimeout(function(){ba.classList.remove("on");bc.classList.remove("on");open=[];busy=false},950)}}
+    }
+    build();
+    el.querySelector('[data-a="check"]').addEventListener("click",function(){var okc=N-Object.keys(missed).length;score(el,okc,N,"matched on the first try so far · "+matched+" of "+N+" pairs found")});
+    el.querySelector('[data-a="reset"]').addEventListener("click",function(){init();var s=el.querySelector(".ascore");s.className="ascore";s.textContent="";build()});
+  }
+  R.sort=function(p,el){dnd(p,el,"sort")};
+  R.order=function(p,el){dnd(p,el,"order")};
+  R.fill=function(p,el){dnd(p,el,"fill")};
+  R.match=match;R.memory=memory;
+
+  /* ---------- lesson reader ---------- */
+  function read(n,i){
+    var L=LESSONS[n-1],pg=L.pages,tot=pg.length,last=i===tot,x=LS[n-1];
+    var dots=pg.map(function(p,k){return '<button type="button" class="dot'+(k===i?' cur':k<i?' seen':'')+(/^(sort|order|fill|match|memory)$/.test(p.k)?' act':'')+'" data-k="'+k+'" aria-label="Page '+(k+1)+'"'+(k===i?' aria-current="step"':'')+'></button>'}).join("")+'<button type="button" class="dot qz'+(last?' cur':'')+'" data-k="'+tot+'" aria-label="Quiz"></button>';
+    put('<div class="qtop"><span class="cnt">Lesson '+n+': '+x[1]+'</span><button class="btn" id="lback" type="button">All lessons</button></div><div class="dots" role="group" aria-label="Lesson pages">'+dots+'</div><div class="stage" id="stage"></div><div class="bar center">'+(i>0?'<button class="btn" id="lprev" type="button">Previous</button>':'')+'<button class="btn pri" id="lnext" type="button">'+(last?'Start the quiz':i===tot-1?'Finish lesson':'Next')+'</button></div><p class="hint">Page '+(Math.min(i+1,tot))+' of '+tot+(last?' · quiz':'')+'</p>');
+    var stage=document.getElementById("stage");
+    if(!last)R[pg[i].k](pg[i],stage,n);
+    else stage.innerHTML='<div class="lp lp-hero"><div class="hn" aria-hidden="true">?</div><p class="hk" data-s style="--i:0">Lesson '+n+' quiz</p><h3 class="ht" data-s style="--i:1">Ready for the quiz?</h3><span class="hline"></span><p class="hs" data-s style="--i:3">The quiz covers everything in Lesson '+n+'. Questions and answers are shuffled. You need 80% or better to unlock the next lesson.</p></div>';
+    stage.classList.remove("in");void stage.offsetWidth;stage.classList.add("in");
+    document.getElementById("lback").addEventListener("click",list);
+    var pv=document.getElementById("lprev");if(pv)pv.addEventListener("click",function(){read(n,i-1)});
+    document.getElementById("lnext").addEventListener("click",function(){if(last)quiz(n);else read(n,i+1)});
+    root.querySelectorAll(".dot").forEach(function(d){d.addEventListener("click",function(){read(n,+d.getAttribute("data-k"))})});
+  }
+  function quiz(n){
+    var FIN=n===9,qs_=FIN?[].concat.apply([],QZ.slice(0,8).map(function(z){return shuf(z.qs).slice(0,5)})):QZ[n-1].qs,list_=shuf(qs_),k=0,score=0,missed=[];
+    function ask(){
+      var q=list_[k],tot=list_.length,multi=q.ans.length>1;
+      var opts=shuf(q.ans.map(function(t){return{t:t,ok:true}}).concat(q.wrong.map(function(t){return{t:t,ok:false}})));
+      put('<div class="qtop"><span class="cnt">'+(FIN?'Final test':'Lesson '+n+' quiz')+': question '+(k+1)+' of '+tot+'</span></div><div class="prog"><i style="width:'+(k/tot*100)+'%"></i></div><h4 class="qq" id="lq" tabindex="-1">'+q.q+'</h4><p class="qhint">'+(multi?'Select all that apply.':'Select one answer.')+'</p><div class="opts" id="lopts">'+opts.map(function(o,j){return '<label class="opt"><input type="'+(multi?'checkbox':'radio')+'" name="lo" value="'+j+'"><span class="otx">'+o.t+'</span><span class="tag" hidden></span></label>'}).join("")+'</div><p class="qerr" id="lerr" role="alert" hidden></p><p class="fb" id="lfb" hidden></p><div class="bar center" id="lbar"><button class="btn pri" id="lcheck" type="button">Check answer</button></div>');
+      document.getElementById("lq").focus({preventScroll:true});
+      var ins=[].slice.call(root.querySelectorAll("#lopts input")),ls=[].slice.call(root.querySelectorAll(".opt")),er=document.getElementById("lerr");
+      ins.forEach(function(x){x.addEventListener("change",function(){er.hidden=true;ls.forEach(function(l,j){l.classList.toggle("sel",ins[j].checked)})})});
+      document.getElementById("lcheck").addEventListener("click",function(){
+        var sel=ins.map(function(x){return x.checked});
+        if(sel.indexOf(true)<0){er.textContent="Select an answer first.";er.hidden=false;return}
+        var good=opts.every(function(o,j){return o.ok===sel[j]});
+        ls.forEach(function(l,j){var o=opts[j],t=l.querySelector(".tag");ins[j].disabled=true;l.classList.remove("sel");var m=o.ok&&sel[j]?["ok","Correct"]:!o.ok&&sel[j]?["bad","Incorrect"]:o.ok?["miss","Missed"]:null;if(m){l.classList.add(m[0]);t.textContent=m[1];t.hidden=false}});
+        if(good)score++;else missed.push(q);
+        var fb=document.getElementById("lfb");fb.className="fb "+(good?"ok":"bad");fb.textContent=good?"Correct.":"Not quite. The correct answer is marked above.";fb.hidden=false;
+        var lastq=k===tot-1;document.getElementById("lbar").innerHTML='<button class="btn pri" id="lnq" type="button">'+(lastq?"See results":"Next question")+'</button>';
+        var nb=document.getElementById("lnq");nb.focus({preventScroll:true});
+        nb.addEventListener("click",function(){if(lastq)done();else{k++;ask()}});
+      });
+    }
+    function done(){
+      var pct=Math.round(score/list_.length*100),pass=pct>=80;
+      if(store[n]==null||pct>store[n]){store[n]=pct;save()}
+      var miss=missed.length?'<h4 class="qq">Review these</h4><ul class="qmiss">'+missed.map(function(q){return '<li><span class="mq">'+q.q+'</span><span class="ma">'+q.ans.join("; ")+'</span></li>'}).join("")+'</ul>':'<p class="qhint">You got every question right.</p>';
+      var btns=FIN?(pass?'<button class="btn pri" id="lall" type="button">All lessons</button><button class="btn" id="lretry" type="button">Retake test</button>':'<button class="btn pri" id="lretry" type="button">Retake test</button><button class="btn" id="lall" type="button">All lessons</button>'):pass?(n<8?'<button class="btn pri" id="lgo" type="button">Continue to Lesson '+(n+1)+'</button>':'')+'<button class="btn" id="lall" type="button">All lessons</button>':'<button class="btn pri" id="lretry" type="button">Retake quiz</button><button class="btn" id="lrev" type="button">Review lesson</button>';
+      put('<div class="qres"><p class="cnt">'+(FIN?(pass?'Final test passed':'Not yet'):(pass?'Lesson '+n+' passed':'Not yet'))+'</p><p class="qscore">'+score+' of '+list_.length+'</p><p class="qhint">'+pct+'% correct. '+(FIN?(pass?'Congratulations, you have completed the Alpha Phi Delta study guide lessons.':'You need 80% to pass. Review the lessons and try again.'):pass?(n<8?'Lesson '+(n+1)+' is now unlocked.':'You have completed all eight lessons.'):'You need 80% to pass.')+'</p></div>'+miss+'<div class="bar center">'+btns+'</div>');
+      var g=function(id,f){var e=document.getElementById(id);if(e)e.addEventListener("click",f)};
+      g("lgo",function(){read(n+1,0)});g("lall",list);g("lretry",function(){quiz(n)});g("lrev",function(){read(n,0)});
+    }
+    ask();
+  }
+  list();
+})();
 var dd=document.getElementById("dd"),ddb=document.getElementById("ddb"),ddm=document.getElementById("ddm");
 function menu(v){ddb.setAttribute("aria-expanded",v);ddm.hidden=!v}
 ddb.addEventListener("click",function(e){e.stopPropagation();menu(ddm.hidden)});
@@ -334,9 +1068,9 @@ document.getElementById("enter").addEventListener("click",function(e){
   setTimeout(function(){location.hash="cards";route();gate.classList.add("open")},3200);
   setTimeout(function(){gate.className="gate";homeEl.classList.remove("leaving");busy=false},4300);
 });
-var views=["home","cards","practice","greek","oath"];
+var views=["home","cards","practice","lessons","greek","oath"];
 document.getElementById("herologo").src=document.getElementById("homelogo").src;
-function route(){var h=location.hash.replace("#","");if(views.indexOf(h)<0)h="home";var home=(h==="home");views.forEach(function(v){document.getElementById("v-"+v).hidden=(v!==h)});["hero","foot","main"].forEach(function(id){document.getElementById(id).hidden=home});document.querySelectorAll(".tabs a").forEach(function(a){a.setAttribute("aria-current",a.getAttribute("href")==="#"+h?"page":"false")});ddb.classList.toggle("cur",h==="cards"||h==="practice"||h==="greek"||h==="oath");menu(false);window.scrollTo(0,0)}
+function route(){var h=location.hash.replace("#","");if(views.indexOf(h)<0)h="home";var home=(h==="home");views.forEach(function(v){document.getElementById("v-"+v).hidden=(v!==h)});["hero","foot","main"].forEach(function(id){document.getElementById(id).hidden=home});document.querySelectorAll(".tabs a").forEach(function(a){a.setAttribute("aria-current",a.getAttribute("href")==="#"+h?"page":"false")});ddb.classList.toggle("cur",h==="cards"||h==="practice"||h==="lessons"||h==="greek"||h==="oath");menu(false);var gp=document.getElementById("gpanel");if(gp){gp.classList.remove("enter");if(h==="greek"){void gp.offsetWidth;gp.classList.add("enter")}}window.scrollTo(0,0)}
 window.addEventListener("hashchange",route);
 route();
 </script>
